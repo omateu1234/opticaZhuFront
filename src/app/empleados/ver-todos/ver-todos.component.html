@@ -1,0 +1,59 @@
+<script></script>
+<div class="container-flex containerPagina">
+    <div class="fatherContainer">
+        <div class="row w-100 mb-4">
+            <div class="col-auto me-auto">
+                <h1 class="tituloPagina">Todos los empleados</h1>
+            </div>
+            <div class="col-auto ms-auto d-flex "><button class="botonNuevaCita">Nueva Cita</button></div>
+        </div>
+        <div class="my-3">
+            <table datatable [dtOptions]="dtOptions" id="empleados" class="empleadosTable table table-stripped">
+                <thead>
+                    <tr>
+                        <th class="">DNI</th>
+                        <th class="">Nombre</th>
+                        <th class="">Apellido</th>
+                        <th class="">Direccion</th>
+                        <th class="">Teléfono</th>
+                        <th class="">Correo</th>
+                        <th class="">Nombre de Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr (click)="accederPerfilEmpleado()" style="cursor:pointer">
+                        <td>21006147V</td>
+                        <td>Manuel</td>
+                        <td>Garcia</td>
+                        <td>Buena Vista 23</td>
+                        <td>610416779</td>
+                        <td>manu_manu2&#64;gmail.com</td>
+                        <td>mangar21</td>
+                    </tr>
+                    <tr>
+                        <td>45678901W</td>
+                        <td>Marta</td>
+                        <td>Velazquez</td>
+                        <td>Ave del Paraiso 21</td>
+                        <td>657894123</td>
+                        <td>martvel12&#64;gmail.com</td>
+                        <td>marvel45</td>
+                    </tr>
+                    <tr>
+                        <td>98765432X</td>
+                        <td>Carlos</td>
+                        <td>Lopez</td>
+                        <td>Pasaje Baldío 9</td>
+                        <td>674145215</td>
+                        <td>carlos23_l&#64;gmail.com</td>
+                        <td>carlop98</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <div class="routerLinkPerfil">
+        <router-outlet></router-outlet>
+    </div> -->
+</div>
+<script></script>

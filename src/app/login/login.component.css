@@ -1,0 +1,17 @@
+.labelLogin {
+    background-color: #9FF0DA!important;
+    font-size: .8em!important;
+    width: 165px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    background:none;
+    border:none;
+    font-size:1.2em;
+}
+
+.cardLogin {
+    background-color: rgb(248, 248, 248)!important;
+    border: 1px solid rgb(240, 240, 240)!important;
+}

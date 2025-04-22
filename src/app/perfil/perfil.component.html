@@ -1,0 +1,64 @@
+<div class="containerPagina">
+    <div class="row w-100 mb-4">
+        <div class="col-auto me-auto">
+            <h1 class="tituloPagina">Perfil de {{nombre}} {{apellido}}
+            </h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a (click)="atras()" style="cursor: pointer;">
+                <!-- onclick="location.href='/citas'" --><i class="fa-solid fa-x fa-lg"></i></a>
+        </div>
+    </div>
+    <form action="">
+        <div class="row mt-5 pt-5">
+            <div class="col">
+                <div class="row-auto d-flex justify-content-center">
+                    <img src="./assets/images/user.svg" width="170px" alt=""></div>
+                <div class="row-auto  d-flex justify-content-center">
+                    <button class="botonNuevaCita mt-5" (click)="modifica()">Modificar datos</button>
+                </div>
+
+            </div>
+
+            <div class="col mt-5">
+                <div class="row  d-flex">
+                    <label class="perfilLabel" style="">Nombre y apellidos: </label>
+                    <p id="nombreCompletoPerfil">{{apellido}}, {{nombre}}</p>
+                    <input id="nombrePerfilMod" type="hidden" class="form-control" value="{{nombre}}">
+                    <input id="apePerfilMod" type="hidden" class="form-control" value="{{apellido}}">
+
+                    <label class="perfilLabel">Direccion: </label>
+                    <p id="direccionPerfil">{{direccion}}</p>
+                    <input id="direccionPerfilMod" type="hidden" value="{{direccion}}">
+
+                    <label class="perfilLabel">UserName: </label>
+                    <p id="nomUSerPerfil">{{nombreEmpleado}}</p>
+                    <input id="nomUSerPerfilMod" type="hidden" class="form-control" value="{{nombreEmpleado}}">
+
+                </div>
+
+
+            </div>
+            <div class="col mt-5">
+                <div class="row  d-flex">
+                    <label class="perfilLabel">DNI: </label>
+                    <p id="dniPerfil">{{dni}}</p>
+                    <input type="hidden" class="form-control" value="{{dni}}">
+
+                    <label class="perfilLabel">Teléfono: </label>
+                    <p>{{telefono}}</p>
+                    <input type="hidden" class="form-control" value="{{telefono}}">
+
+                    <label class="perfilLabel">Correo: </label>
+                    <p>{{correo}}</p>
+                    <input type="hidden" class="form-control" value="{{correo}}">
+                    <!-- <label class="perfilLabel">Contraseña:</label>
+                    <p>//</p>
+                    <input type="hidden" value="{{contrasenia}}"> -->
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

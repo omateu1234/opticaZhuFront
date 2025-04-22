@@ -1,0 +1,54 @@
+<div class="container-flex containerPagina">
+    <div class="row w-100 mb-4">
+        <div class="col-auto me-auto">
+            <h1 class="tituloPagina">Perfil de empleado {{nombreEmpleado}} {{apellidoEmpleado}}</h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a onclick="location.href='/empleados/ver-todos'" style="cursor: pointer;"><i class="fa-solid fa-x fa-lg"></i></a>
+        </div>
+    </div>
+
+    <form class="">
+        <div class="m-3 row d-flex justify-content-between fullAltura">
+            <div class="col col-4 ms-4">
+                <label for="name" class="col-form-label">Nombre</label>
+                <p style="font-size: 1.3em;"> <strong>{{nombreEmpleado}}</strong></p>
+                <!-- <input type="text" id="name" class="form-control"> -->
+
+                <label for="lastname" class="col-form-label">Apellido</label>
+                <p style="font-size: 1.3em;"><strong>{{apellidoEmpleado}}</strong></p>
+                <!-- <input type="text" id="lastname" class="form-control"> -->
+
+                <label for="address" class="col-form-label">Direccion</label>
+                <p style="font-size: 1.3em;"><strong>{{direccionEmpleado}}</strong></p>
+                <!-- <input type="text" id="address" class="form-control"> -->
+
+                <label for="username" class="col-form-label">Nombre de Usuario</label>
+                <p style="font-size: 1.3em;"> <strong>{{nombreUsuario}}</strong></p>
+                <!-- <input type="text" id="username" class="form-control"> -->
+
+            </div>
+            <div class="col col-4 me-4">
+                <div class="">
+                    <label for="dni" class="col-form-label">DNI</label>
+                    <p style="font-size: 1.3em;"><strong>{{dniEmpleado}}</strong></p>
+                    <!-- <input type="text" id="dni" class="form-control">   -->
+                </div>
+
+                <label for="phone" class="col-form-label">Telefono</label>
+                <p style="font-size: 1.3em;"><strong>{{telefonoEmpleado}}</strong></p>
+                <!-- <input type="text" id="phone" class="form-control"> -->
+
+                <label for="email" class="col-form-label">Correo</label>
+                <p style="font-size: 1.3em;"><strong>{{correoEmpleado}}</strong></p>
+                <!-- <input type="text" id="email" class="form-control"> -->
+
+
+                <label for="pswd" class="col-form-label">Contraseña</label>
+                <p style="font-size: 1.3em;"><strong>{{contraseniaEmpleado}}</strong></p>
+                <!-- <input type="password" id="pswd" class="form-control"> -->
+            </div>
+        </div>
+
+    </form>
+</div>

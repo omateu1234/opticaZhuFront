@@ -1,0 +1,86 @@
+:root {
+    --cognac-50: #FFF7EB;
+    --cognac-100: #FFDA9F;
+    --cognac-300: #FFBD62;
+    --cognac-500: #FF7300;
+    --cognac-700: #DA3B00;
+    --cognac-800: #AB2E00;
+    --purto-rico-50: #F1FCF9;
+    --puerto-rico-100: #cff8ec;
+    --puerto-rico-200: #9FF0DA;
+    --puerto-rico-400: #37C8AB;
+    --puerto-rico-500: #21AB96;
+    --puerto-rico-700: #176E63;
+    --puerto-rico-800: #16594F;
+    --puerto-rico-900: #174A42;
+    --puerto-rico-950: #072C28;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Importante para que el border-radius funcione */
+    border-spacing: 0; /* Elimina espacios entre celdas */
+    border: 1px solid #FFBD62; /* Borde general de la tabla */
+    border-radius: 12px; /* Redondear toda la tabla */
+    overflow: hidden; /* Evita que las celdas sobresalgan de la tabla */
+}
+
+/* Encabezados */
+th {
+    background-color: #FFBD62;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #FFBD62;
+}
+
+/* Celdas */
+td {
+    background-color: #FFDA9F;
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+
+/* Alternar colores */
+tbody tr:nth-child(odd) td {
+    background-color: #FFDA9F;
+    color: black;
+}
+
+.botonOutline{
+    border: 1px solid #DA3B00;
+    background-color: white;
+    font-weight: bolder;
+    color: #DA3B00;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+
+}
+
+.botonOutline:hover{
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+}
+
+.botonNuevaCita {
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonFooterModal:hover,
+.botonNuevaCita:hover {
+    background-color: #FF7300;
+    border: 1px solid #FF7300;
+}

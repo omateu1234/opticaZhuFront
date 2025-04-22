@@ -1,0 +1,108 @@
+<div class="container-flex containerPagina">
+    <div class="row w-100 mb-4">
+        <div class="col-auto me-auto">
+            <h1 class="tituloPagina">Perfil de {{nombreCli}} {{apellidoCli}}</h1>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <a onclick="location.href='/clientes/ver-todos'" style="cursor: pointer;"><i class="fa-solid fa-x fa-lg"></i></a>
+        </div>
+    </div>
+    <div class="row m-3">
+        <!-- Columna del formulario (a la izquierda) -->
+        <div class="col-5">
+            <form class="fullAltura">
+                <div class="row">
+                    <div class="col ms-4 my-3">
+                        <label for="name" class="col-form-label">Nombre</label>
+                        <p style="font-size: 1.3em;"><strong>{{nombreCli}} {{apellidoCli}}</strong></p>
+
+                        <label for="dni" class="col-form-label">DNI</label>
+                        <p style="font-size: 1.3em;"><strong>{{dniCli}}</strong></p>
+
+                        <label for="phone" class="col-form-label">Teléfono</label>
+                        <p style="font-size: 1.3em;"><strong>{{telefonoCli}}</strong></p>
+
+                        <label for="postal" class="col-form-label">Código Postal</label>
+                        <p style="font-size: 1.3em;"><strong>{{postalCli}}</strong></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Columna de la tabla (a la derecha) -->
+        <div class="col-7">
+            <h2>Historial de Citas</h2>
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cita of citasCliente" (click)="seleccionarCita(cita.id)" data-bs-toggle="modal" data-bs-target="#borrarCitaModal">
+                        <td>{{ cita.fecha }}</td>
+                        <td>{{ cita.descripcion }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-end mt-3">
+        <div class="col-auto">
+            <button class="btn btn-primary botonOutline px-4 py-2" data-bs-toggle="modal" data-bs-target="#borrarCliModal">Dar de Baja</button>
+        </div>
+    </div>
+
+    <div class="modal  fade" id="borrarCliModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                        <div class="col d-flex align-items-center">
+                            <h5 class="modal-title tituloModal" id="exampleModalLabel">¿Seguro que quieres dar de baja a este Empleado?</h5>
+                        </div>
+                        <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    </div>
+                </div>
+                <div class="modal-body mt-2 mb-3">
+                    <div class="col px-2">
+                        <div class="row my-2 ">
+                            <div class="col d-flex flex-row align-items-center justify-content-center">
+                                <button type="submit" class="btn btn-primary botonBorrar me-4" (click)="borrarCli()" style="width: 150px;"><i class="fa-solid fa-trash"></i> Dar de baja</button>
+                                <button class="btn btn-primary  botonNuevaCita justify-content-end" (click)="cerrarModalCliente()" style="width: 150px;"><i class="fa-solid fa-x"></i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal  fade" id="borrarCitaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                        <div class="col d-flex align-items-center">
+                            <h5 class="modal-title tituloModal" id="exampleModalLabel">¿Seguro que quieres eliminar esta Cita?</h5>
+                        </div>
+                        <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    </div>
+                </div>
+                <div class="modal-body mt-2 mb-3">
+                    <div class="col px-2">
+                        <div class="row my-2 ">
+                            <div class="col d-flex flex-row align-items-center justify-content-center">
+                                <button type="submit" class="btn btn-primary botonBorrar me-4" (click)="borrarCita()" style="width: 150px;"><i class="fa-solid fa-trash"></i> Dar de baja</button>
+                                <button class="btn btn-primary  botonNuevaCita justify-content-end" (click)="cerrarModalCita()" style="width: 150px;"><i class="fa-solid fa-x"></i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

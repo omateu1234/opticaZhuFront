@@ -1,0 +1,13 @@
+/* .empleadosTable th{
+    background-color: #166F61;
+    color: white;
+}
+
+.empleadosTable tr:nth-of-type(odd){
+    background-color: rgba(207, 248, 236, 0.56) !important;
+}
+
+
+.empleadosTable tr:nth-of-type(even){
+    background-color: #ffffff !important;
+} */

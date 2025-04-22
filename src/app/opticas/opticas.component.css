@@ -1,0 +1,34 @@
+:root {
+  --cognac-100:#FFDA9F;
+
+  --cognac-500: #FF7300;
+  --cognac-700: #DA3B00;
+  --cognac-800: #AB2E00;
+  --puerto-rico-200: #9FF0DA;
+  --puerto-rico-400: #37C8AB;
+}
+
+.contCard{
+  display: flex;
+  flex-wrap: wrap; /* Permite que se ajusten a nuevas líneas */
+  gap: 16px; /* Espacio entre cartas */
+  justify-content: center; /* Centra las cartas horizontalmente */
+  padding: 16px;
+}
+
+
+.carta{
+  border: 1px solid #DA3B00;
+  width: 317px;
+  height: 313px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 7px;
+}
+
+.cartaFooter{
+  background-color: #FFDA9F;
+  padding: 8px;
+  text-align: center;
+}

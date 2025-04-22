@@ -1,0 +1,9 @@
+.tituloCita{
+  font-weight:bold;
+}
+
+.ocupada{
+  background-color: rgba(218, 59, 0, 0.10);
+  color: rgba(218, 59, 0, 0.35);
+  font-weight: 400;
+}

@@ -1,0 +1,85 @@
+
+
+<div class="row w-100">
+  <div class="col-6">
+      <form id="formCalendario" class="row">
+          <div class="col px-2">
+              <div class="row my-3">
+                  <div class="col mr-5 form-check form-check-inline">
+                     <input type="checkbox" class="form-check-input" id="sabado" name="sabado" value="sab">
+                     <label for="sabado" class="form-check-label">Sabado</label>
+
+
+                  </div>
+
+                  <div class="col">
+                      <input type="checkbox" class="form-check-input" id="domingo" name="domingo" value="dom">
+                      <label for="domingo" class="form-check-label">Domingo</label>
+                  </div>
+
+
+                  <div class="col">
+                      <input type="checkbox" class="form-check-input" id="festivo" name="festivo" value="fes">
+                      <label for="festivo" class="form-check-label">Festivos</label>
+                  </div>
+
+                  <div class="row my-5">
+                      <div class="col mr-5">
+                          <label class="col-form label" for="horaAO">Hora Apertura</label>
+                          <input class="form-control form-control-lg" type="number" name="horaAO" id="horaAO">
+                      </div>
+
+                      <div class="col">
+                          <label class="col-form label" for="horaCO">Hora Cierre</label>
+                          <input class="form-control form-control-lg" type="number" name="horaCO" id="horaCO" max="9">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+
+
+
+      <!-- <div class="row my-3">
+          <div class="col">
+              <div id="calendar">
+                  <div class="d-flex">
+                      <div
+                        class="border rounded"
+                        data-coreui-locale="en-US"
+                        data-coreui-start-date="2024/02/13"
+                        data-coreui-toggle="calendar"
+                      ></div>
+                    </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div class="d-flex justify-content-center">
+        <c-calendar class="border rounded" locale="en-US" [startDate]="startDate" />
+      </div> -->
+
+  </div>
+
+<div class="col d-flex justify-content-end">
+  <div class="card  mb-1 cartaOptica">
+      <div class="card-header"><h5>Calendario de la Óptica</h5></div>
+      <div class="card-body">
+          <p class="card-text">En esta sección puedes gestionar y personalizar el horario de tu óptica. Define los días y horarios de atención, así como los días festivos o fechas especiales en las que la óptica permanecerá cerrada. Mantén tu calendario actualizado para ofrecer un mejor servicio a tus clientes</p>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="row w-100 mt-5">
+  <div class="col">
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button class="botonNuevaCita" onclick="location.href='/optica-config/informacion'">Anterior</button>
+      </div>
+      <div class="col-auto">
+        <button class="botonNuevaCita" onclick="location.href='/optica-config/trabajadores'">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>

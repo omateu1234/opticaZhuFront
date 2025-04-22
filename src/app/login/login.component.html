@@ -1,0 +1,67 @@
+<style>
+    #show-hide-passwordLog {
+        background: none;
+        border: none;
+        font-size: 1.2em;
+    }
+</style>
+<div class="container h-100 " style="width:100vw; min-height: 100vh;">
+
+    <div class="row d-flex justify-content-center align-items-center " style="min-height: 100vh;">
+        <div class=" col col-6 ">
+            <div class="row p-3 ">
+                <img src="/assets/images/verdinaranjaTrayecto.svg " class="logo " alt="OpticasZhu ">
+            </div>
+            <div class="row p-3 ">
+                <div class="card cardLogin ">
+
+
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="input-group my-2 p-2 ">
+                            <label class="input-group-text text-center labelLogin ">
+                              <div class="col-1 mx-2 "><i class="fa-solid fa-id-card "></i></div>
+                              <div class="col mx-1 ">Nombre de usuario</div>
+                          </label>
+                            <input type="text " name="nombreUsuario " class="form-control p_input" [(ngModel)]="nombreUsuario">
+                        </div>
+                        <div class="input-group my-2 p-2 ">
+                            <label class="input-group-text text-center labelLogin ">
+                              <div class="col-1 mx-2 "><button type="button" id="show-hide-passwordLog" (click)="mostrarContrasenia()"><i id="passicon" class="fa-solid fa-lock "></i></button></div>
+                              <div class="col mx-1 ">Contraseña</div>
+                          </label>
+                            <input type="password " name="contrasenia" id="contrasenia" type="password" class="form-control p_input " [(ngModel)]="contrasenia">
+                        </div>
+
+
+                        <div class="text-center my-2 p-2">
+                            <button type="submit" class="btn btn-warning botonNaranja btn-block enter-btn w-100">Iniciar Sesion</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+<script>
+    $('#show-hide-passwordLog').on('click', function() {
+        event.preventDefault();
+        $('#contrasenia').attr('type', $('#contrasenia').attr('type') == 'text' ? 'password' : 'text');
+
+        if ($('#show-hide-passwordLog').html() == '<i class="fa-solid fa-lock "></i>') {
+            //console.log('lock');
+            $('#show-hide-passwordLog').html('');
+            $('#show-hide-passwordLog').html('<i class="fa-solid fa-unlock "></i>');
+        } else {
+            //console.log('unlock');
+            $('#show-hide-passwordLog').html('');
+            $('#show-hide-passwordLog').html('<i class="fa-solid fa-lock "></i>');
+        }
+
+
+
+    });
+</script>

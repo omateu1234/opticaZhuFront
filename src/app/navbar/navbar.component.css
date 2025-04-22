@@ -1,0 +1,124 @@
+.menu {
+    margin: 0;
+    width: 170px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--Puerto-Rico-50, #F1FCF9);
+    box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Estilo del logo principal */
+
+.menu .logo {
+    margin: 5px;
+    height: 50px;
+}
+
+
+/* Estilo para la sección del usuario */
+
+.menu .userLogo {
+    margin: 10px 0px;
+    width: 50px;
+    height: 50px;
+}
+
+.containerUser {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    flex-direction: column;
+    margin: 40px 0px;
+    transition: all 0.3s ease;
+}
+
+.containerUser:hover {
+    box-shadow: inset 0px 0px 0px 1px #6cc9bc;
+}
+
+
+/* Estilo para los enlaces de menú */
+
+.menu .optionText {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.sidebarLi {
+    margin: 10px auto;
+    ;
+}
+
+.menu .optionText:hover,
+.menu .optionText.active {
+    /* background-color: #004d26; */
+    background-color: #16594F;
+    /*Color de fondo en hover */
+}
+
+.optionText .sidebar-optionA {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.optionText:hover .sidebar-optionA,
+.optionText.active .sidebar-optionA {
+    color: white;
+}
+
+.sidebarUl {
+    list-style: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+.submenu {
+    font-size: 0.9em;
+    margin-top: 3px;
+    border-radius: 7px;
+    background-color: var(--Puerto-Rico-100, #CFF8EC);
+    padding: 5px;
+}
+
+.submenu a {
+    color: black;
+    text-decoration: none;
+}
+
+.submenu a:hover {
+    color: var(--Puerto-Rico-700, #166F61);
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.dropdown-menu {
+    position: relative;
+    display: none;
+    /* Ocultamos inicialmente */
+    list-style: none;
+    transition: height .35s ease;
+}
+
+.dropdown-menu.visible {
+    display: table-row;
+    /* Mostramos cuando tiene la clase visible */
+}
