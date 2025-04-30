@@ -53,26 +53,39 @@
                     </div>
                 </ul>
             </li>
-            <li class="nav-item sidebarLi">
-              <div class="optionText">
-                  <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#articulosSubList" role="button" aria-expanded="false" aria-controls="articulosSubList">Artículos</a>
-              </div>
-              <ul class="collapse list-unstyled" id="articulosSubList">
-                  <div class="submenu">
+          }
+          <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#articulosSubList" role="button" aria-expanded="false" aria-controls="articulosSubList">Artículos</a>
+            </div>
+            <ul class="collapse list-unstyled" id="articulosSubList">
+                <div class="submenu">
 
-                      <li><a data-bs-toggle="modal" data-bs-target="#buscarArtModal" style="cursor: pointer;">Buscar Artículo</a></li>
-                      <li><a data-bs-toggle="modal" data-bs-target="#crearArtModal" style="cursor: pointer;">Crear Artículo</a></li>
-                      <li><a routerLink="/articulos/ver-todos">Ver los Artículos</a></li>
-                  </div>
-              </ul>
-          </li>
-
-            <li class="nav-item sidebarLi">
-                <div class="optionText">
-                    <a class="sidebar-optionA" routerLink="/opticas">Ópticas</a>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarArtModal" style="cursor: pointer;">Buscar Artículo</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#crearArtModal" style="cursor: pointer;">Crear Artículo</a></li>
+                    <li><a routerLink="/articulos/ver-todos">Ver los Artículos</a></li>
                 </div>
-            </li>
-            }
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+          <div class="optionText">
+              <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="pedidosSubList">Pedidos</a>
+          </div>
+          <ul class="collapse list-unstyled" id="pedidosSubList">
+              <div class="submenu">
+
+                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Buscar Pedido</a></li>
+                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Crear Pedido</a></li>
+                  <li><a routerLink="">Ver los Pedidos</a></li>
+              </div>
+          </ul>
+      </li>
+
+          <li class="nav-item sidebarLi">
+              <div class="optionText">
+                  <a class="sidebar-optionA" routerLink="/opticas">Ópticas</a>
+              </div>
+          </li>
 
         </ul>
     </div>
@@ -354,7 +367,7 @@
                           <div *ngIf="proveedores && proveedores.length >0;" class="col">
                             <label class="col-form-label" >Proveedor</label>
                             <select id="proveedor" name="idProveedor" [(ngModel)]="idProveedor" class="form-select w-auto">
-                              <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}} {{proveedor.id}}</option>
+                              <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
                             </select>
                           </div>
                       </div>
