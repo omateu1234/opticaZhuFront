@@ -1,27 +1,44 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+/***Citas */
 import { CitasComponent } from './citas/citas.component';
+/******************************************************** */
+/**Clientes */
 import { ClientesComponent } from './clientes/clientes.component';
 import { BuscarCliComponent } from './clientes/buscar/buscar.component';
 import { CrearCliComponent } from './clientes/crear/crear.component';
 import { VerTodosCliComponent } from './clientes/ver-todos/ver-todos.component';
+import { ClientePerfilComponent } from './clientes/cliente-perfil/cliente-perfil.component';
+/******************************************************************************** */
+/**Empleados */
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { BuscarComponent } from './empleados/buscar/buscar.component';
 import { CrearComponent } from './empleados/crear/crear.component';
 import { VerTodosEmpleadosComponent } from './empleados/ver-todos/ver-todos.component';
 import { PerfilEmpleadoComponent } from "./empleados/perfil-empleado/perfil-empleado.component";
+/************************************************************************************************ */
+/**Opticas */
 import { OpticasComponent } from './opticas/opticas.component';
 import { OpticasTablaComponent } from './opticas/opticas-tabla/opticas-tabla.component';
 import { OpticaConfigComponent } from './optica-config/optica-config.component';
 import { InformacionComponent } from './optica-config/informacion/informacion.component';
 import { CalendarioComponent } from './optica-config/calendario/calendario.component';
 import { TrabajadoresComponent } from './optica-config/trabajadores/trabajadores.component';
+/************************************************************************************************* */
 import { ContentComponent } from './content/content.component';
+/**Fecha */
 import { FechaComponent } from './fecha/fecha.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { ClientePerfilComponent } from './clientes/cliente-perfil/cliente-perfil.component';
+/*************************************************************** */
+/**Articulos */
+import { ArticulosComponent } from './articulos/articulos.component';
+import { VerTodosComponent } from './articulos/ver-todos/ver-todos.component';
+import { PerfilArticuloComponent } from './articulos/perfil-articulo/perfil-articulo.component';
+/***************************************************************************** */
+/***Guards */
 import { auxiliarGuard } from './guards/auxiliar.guard';
 import { adminGuard } from './guards/admin.guard';
+/*************************************************************** */
 
 export const routes: Routes = [{
   path: '',
@@ -42,7 +59,7 @@ component: LoginComponent,
 },
 {
   path: 'clientes',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     /* {
       path: 'buscar',
@@ -64,7 +81,7 @@ component: LoginComponent,
 },
 {
   path: 'empleados',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     /* {
       path: 'buscar',
@@ -85,13 +102,27 @@ component: LoginComponent,
   ]
 },
 {
+  path: 'articulos',
+  component: ArticulosComponent,
+  children: [
+      {
+        path: 'ver-todos',
+        component: VerTodosComponent,
+      },
+      {
+        path:'perfil-articulo',
+        component: PerfilArticuloComponent
+      }
+  ]
+},
+{
   path: 'opticas',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     {
       path: '',
       component: OpticasComponent,
-      canActivate: [adminGuard],
+      //canActivate: [adminGuard],
     },
     {
       path: 'opticas-tabla',
@@ -101,7 +132,7 @@ component: LoginComponent,
 },
 {
   path: 'optica-config',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     {
       path: '',
@@ -124,7 +155,7 @@ component: LoginComponent,
 },
 {
   path: 'fecha',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     {
       path: '',
@@ -134,7 +165,7 @@ component: LoginComponent,
 },
 {
   path: 'perfil',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     {
       path: '',
@@ -144,7 +175,7 @@ component: LoginComponent,
 }/* ,
 {
   path: 'login',
-  component: ContentComponent, 
+  component: ContentComponent,
   children: [
     {
       path: '',

@@ -38,7 +38,7 @@ export class FechaComponent  implements OnInit{
               private router: Router,
               private citaSerivce: CitasService) { }
 
-              
+
   ngOnInit(): void {
     //Aqui se recoge el dni del cliente que proviene de la pagina de citas, tambien recoge la fecha de la cita
 
@@ -93,7 +93,7 @@ export class FechaComponent  implements OnInit{
       let ocupado = false;
 
       for (let cita of this.citasOcup) {
-        console.log(cita.hora);
+       // console.log(cita.hora);
         if(cita.hora === hora){
           ocupado = true;
           //alert('ocupada');

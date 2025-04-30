@@ -1,12 +1,13 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { EmpleadosService } from './Servicios/empleados.service';
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css' 
+  styleUrl: './app.component.css'
 })
 
 
@@ -14,12 +15,12 @@ export class AppComponent implements OnInit {
   idEmpleado: any;
   empleado: any = [];
   nombreEmpleado:string = localStorage.getItem('nombreEmpleado') || '';
-  
+
 
   constructor(private empleadosService: EmpleadosService) { }
   ngOnInit(): void {
     this.idEmpleado = localStorage.getItem('idEmpleado');
-    
+
     this.empleadosService.getEmpleado(this.idEmpleado).subscribe((data: any) => {
       this.empleado = data;
       this.nombreEmpleado = this.empleado.nombre;

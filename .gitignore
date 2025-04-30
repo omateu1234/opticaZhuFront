@@ -7,11 +7,7 @@
 /bazel-out
 
 # Node
-<<<<<<< HEAD
-node_modules/
-=======
 /node_modules
->>>>>>> 19a59af5c5e26d64e323f727be73825c1ffcab23
 npm-debug.log
 yarn-error.log
 
@@ -44,7 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
-=======
-
->>>>>>> 19a59af5c5e26d64e323f727be73825c1ffcab23

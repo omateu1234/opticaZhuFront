@@ -3,6 +3,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { EmpleadosService } from '../Servicios/empleados.service';
 import { ClientesService } from '../Servicios/clientes.service';
+import { ArticulosRealService } from '../Servicios/articulos-real.service';
+import { ProveedoresService } from '../Servicios/proveedores.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
@@ -18,22 +20,37 @@ idEmpleado: any;
   empleado: any = [];
   nombreEmpleado:string = localStorage.getItem('nombreEmpleado') || '';
   rol:string = localStorage.getItem('rolUser') || '';
-  
 
-  constructor(private empleadosService: EmpleadosService, private clientesService:ClientesService, private router:Router) { }
+
+  constructor(private empleadosService: EmpleadosService,
+              private clientesService:ClientesService,
+              private articulosRealService: ArticulosRealService ,
+              private proveedoresService: ProveedoresService,
+              private router:Router) { }
 
   dni: string= '';
+  idArticulo: string= '';
+  articulo: any;
   cliente: any;
+  proveedores: any=[];
+
+  nombre:string='';
+  descripcion:string='';
+  precioProveedor: number=0;
+  idProveedor:string='';
 
 
   ngOnInit(): void {
     this.idEmpleado = localStorage.getItem('idEmpleado');
-    
+
     this.empleadosService.getEmpleado(this.idEmpleado).subscribe((data: any) => {
       this.empleado = data;
       //this.nombreEmpleado = this.empleado.nombre;
       //console.log(data);
     });
+
+    this.conseguirProveedores();
+
     console.log(this.nombreEmpleado);
   }
   title = 'menuProyecto';
@@ -42,6 +59,8 @@ idEmpleado: any;
     if (dropdown && dropdown.classList.contains('dropdown-menu')) {
       dropdown.classList.toggle('visible');
     }
+
+
   }
 
   cerrarSesion(){
@@ -60,8 +79,53 @@ idEmpleado: any;
       localStorage.setItem('apellidoCli', this.cliente.apellido);
       localStorage.setItem('postalCli', this.cliente.codPostal);
       localStorage.setItem('telefonoCli', this.cliente.telefono);
-    
+
       location.href='clientes/perfil-cliente/';
     })
   }
-}
+
+  buscarArticulo(){
+    localStorage.setItem('id' , this.idArticulo);
+    this.articulosRealService.getById(Number(this.idArticulo)).subscribe((data:any)=>{
+      this.articulo=data;
+
+      localStorage.setItem('idArt', this.articulo.id);
+      localStorage.setItem('nombreArt', this.articulo.nombre);
+      localStorage.setItem('descripcionArt', this.articulo.descripcion);
+      localStorage.setItem('precioArt', this.articulo.precioCliente);
+      localStorage.setItem('stockArt', this.articulo.stock);
+
+      location.href='articulos/perfil-articulo/';
+    })
+    }
+
+    conseguirProveedores(){
+      this.proveedoresService.getAll().subscribe({
+        next: (data: any) => {
+          this.proveedores = data;
+          console.log("proveedores:",this.proveedores)
+        }
+      })
+    }
+
+    crearArticulo(){
+      const articulo={
+        nombre:this.nombre,
+        descripcion:this.descripcion,
+        precioProveedor:this.precioProveedor,
+        idProveedor:this.idProveedor
+      }
+
+      this.articulosRealService.createArticulo(articulo).subscribe({
+        next: (data: any) => {
+            console.log(data);
+            this.router.navigate(['/articulos/ver-todos']);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      });
+      console.log(articulo);
+    }
+  }
+

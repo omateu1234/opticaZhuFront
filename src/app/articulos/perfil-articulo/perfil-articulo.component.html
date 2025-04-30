@@ -1,0 +1,50 @@
+<div class="container-flex containerPagina">
+  <div class="row w-100 mb-4">
+      <div class="col-auto me-auto">
+          <h1 class="tituloPagina">Perfil de {{nombreArt}} </h1>
+      </div>
+      <div class="col d-flex justify-content-end">
+          <a onclick="location.href='/articulos/ver-todos'" style="cursor: pointer;"><i class="fa-solid fa-x fa-lg"></i></a>
+      </div>
+  </div>
+  <div class="row m-3">
+      <!-- Columna del formulario (a la izquierda) -->
+      <div class="col-5">
+          <form class="fullAltura">
+              <div class="row">
+                  <div class="col ms-4 my-3">
+                      <label for="name" class="col-form-label">Nombre</label>
+                      <p style="font-size: 1.3em;"><strong>{{nombreArt}}</strong></p>
+
+                      <label for="dni" class="col-form-label">Descripción</label>
+                      <p style="font-size: 1.3em;"><strong>{{descripcionArt}}</strong></p>
+
+                      <label for="phone" class="col-form-label">Precio</label>
+                      <p style="font-size: 1.3em;"><strong>{{precioArt}}€</strong></p>
+
+                      <label for="postal" class="col-form-label">Stock</label>
+                      <p style="font-size: 1.3em;"><strong>{{stockArt}}</strong></p>
+                  </div>
+              </div>
+          </form>
+      </div>
+
+      <!-- Columna de la tabla (a la derecha) -->
+      <!-- <div class="col-7">
+          <h2>Historial de Citas</h2>
+          <table class="table table-bordered">
+              <thead class="table-light">
+                  <tr>
+                      <th>Fecha</th>
+                      <th>Motivo</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let cita of citasCliente" (click)="seleccionarCita(cita.id)" data-bs-toggle="modal" data-bs-target="#borrarCitaModal">
+                      <td>{{ cita.fecha }}</td>
+                      <td>{{ cita.descripcion }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div> -->
+  </div>
