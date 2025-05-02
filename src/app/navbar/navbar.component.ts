@@ -134,6 +134,10 @@ idEmpleado: any;
           console.log(e);
         }
       });
+      document.querySelector('.modal-backdrop')?.remove();
+      document.getElementById('crearVenModal')?.classList.remove('show');
+      document.body.classList.remove('modal-open');
+      document.querySelector('.modal-backdrop')?.remove();
       console.log(articulo);
     }
 
