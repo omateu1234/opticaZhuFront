@@ -38,7 +38,7 @@ export class VerTodosComponent implements OnInit{
       lengthMenu : [5,10,20,50],
       searching:true,
       columns: [
-        { title: 'ID', data: 'id', visible:false },            // Coincide con la propiedad 'id' en los objetos
+        { title: 'ID', data: 'id', visible:true },            // Coincide con la propiedad 'id' en los objetos
         { title: 'Fecha', data: 'fecha' },     // Coincide con la propiedad 'nombre'
         { title: 'Estado', data: 'estado' }, // Coincide con la propiedad 'apellido'
         { title: 'Metodo de Pago', data:'metodoPago'},
@@ -69,6 +69,9 @@ export class VerTodosComponent implements OnInit{
     this.ventaSeleccionada = data;
 
     localStorage.setItem('nombreCli', this.ventaSeleccionada.cliente.nombre);
+    localStorage.setItem('apellidoCli', this.ventaSeleccionada.cliente.apellido);
+    localStorage.setItem('idVenta', this.ventaSeleccionada.id);
+
 
 
     location.href = 'ventas/perfil-venta/';

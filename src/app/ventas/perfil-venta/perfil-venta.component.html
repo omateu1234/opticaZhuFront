@@ -1,10 +1,70 @@
-<div class="container-flex containerPagina">
+<div class="container-fluid containerPagina">
   <div class="fatherContainer">
-      <div class="row w-100 mb-4">
-          <div class="col-auto me-auto">
-              <h1 class="tituloPagina">Venta a NombreCliente</h1>
-          </div>
-          <div class="col d-flex justify-content-end">
-            <a onclick="location.href='/ventas/ver-todos'"><i class="fa-solid fa-x fa-lg"></i></a>
-        </div>
+
+
+    <div class="row align-items-center mb-4">
+      <div class="col">
+        <h1 class="tituloPagina">Venta a {{nombreCli}} {{apellidoCli}}</h1>
       </div>
+      <div class="col-auto">
+        <a onclick="location.href='/ventas/ver-todos'" class="btn-close">
+          <i class="fa-solid fa-x fa-lg"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h3>Artículos</h3>
+        <form>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-container">
+            <thead class="table-light">
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock Actual</th>
+                <th>Cantidad</th>
+                <th>Importe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let articulo of articulosVenta">
+                <td>{{ articulo.nombre }}</td>
+                <td>{{ articulo.descripcion }}</td>
+                <td>{{ articulo.precioCliente }}€</td>
+                <td>{{ articulo.stock }}</td>
+                <td class="d-flex align-items-center">
+                  <button class="btn btn-sm btn-outline-secondary me-1" (click)="decrementarCantidad(articulo)">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <input type="number" class="form-control form-control-sm text-center mx-1"
+                         name="articulos[{{articulo.id}}][cantidad]"
+                         min="1" max="199" [(ngModel)]="articulo.cantidad" style="width: 70px;">
+                  <button class="btn btn-sm btn-outline-secondary ms-1" (click)="incrementarCantidad(articulo)">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm"
+                         name="articulos[{{articulo.id}}][importe]"
+                         readonly [value]="calcularImporte(articulo)">
+                </td>
+                <input type="hidden" name="articulos[{{articulo.id}}][precio_unitario]" value="{{articulo.precioCliente}}">
+                <input type="hidden" name="articulos[{{articulo.id}}][idVenta]" value="{{idVenta}}" [(ngModel)]="idVenta">
+                <input type="hidden" name="articulos[{{articulo.id}}][idArticulo]" value="{{articulo.id}}" >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col d-flex justify-content-end my-5">
+          <button class="btn btn-primary botonNuevaCita" (click)="crearLineaventa()">Siguiente</button>
+      </div>
+      </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+

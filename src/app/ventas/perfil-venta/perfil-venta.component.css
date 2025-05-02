@@ -1,0 +1,64 @@
+.table-container {
+  background-color: #9FF0DA;
+  border: 1px solid #66d1bc;
+  border-radius: 0.3em;
+  color: black;
+  transition: all 0.3s ease;
+  table-layout: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.table-container th {
+  background-color: #166F61;
+  color: white;
+}
+
+.table-container th:first-child {
+  border-radius: 4px 0 0 0;
+}
+
+.table-container th:last-child {
+  border-radius: 0 4px 0 0;
+}
+
+.table-container tbody tr:nth-child(odd) {
+  background-color: #dff8f1;
+}
+
+.table-container tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 4px;
+}
+
+.table-container tbody tr:last-child td:last-child {
+  border-radius: 0 0 4px 0;
+}
+
+.table-container tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.table-container tbody tr:hover td {
+  background-color: #d8fff41e;
+  color: black;
+}
+
+
+.table-container tbody td {
+  border: transparent;
+}
+
+.table-container tbody tr:nth-child(odd) {
+  background-color: #9FF0DA;
+}
+
+.table-container tbody tr:nth-child(even) {
+  background-color:#D0F7ED;
+}
+
+.table-container tbody tr:hover td {
+  background-color: inherit; /* Mantén el color original */
+  color: inherit; /* Mantén el color original */
+}

@@ -40,6 +40,7 @@ import { PerfilArticuloComponent } from './articulos/perfil-articulo/perfil-arti
 import { VentasComponent } from './ventas/ventas.component';
 import { VerTodosComponent as VerTodosVentasComponent } from './ventas/ver-todos/ver-todos.component';
 import { PerfilVentaComponent } from './ventas/perfil-venta/perfil-venta.component';
+import { FacturaComponent } from './ventas/factura/factura.component';
 /***Guards */
 import { auxiliarGuard } from './guards/auxiliar.guard';
 import { adminGuard } from './guards/admin.guard';
@@ -131,6 +132,10 @@ component: LoginComponent,
     {
       path: 'perfil-venta',
       component: PerfilVentaComponent
+    },
+    {
+    path: 'factura',
+    component: FacturaComponent
     }
   ]
 },

@@ -3,7 +3,10 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ArticulosRealService } from '../../Servicios/articulos-real.service';
+import { LineaVentaService } from '../../Servicios/linea-venta.service';
 import { Router } from '@angular/router';
+import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-perfil-venta',
@@ -13,10 +16,78 @@ import { Router } from '@angular/router';
 })
 export class PerfilVentaComponent implements OnInit{
 
+  nombreCli:string='';
+  apellidoCli:string='';
+  articulosVenta:any[]=[];
 
-  constructor(private router:Router){}
+  /**Formulario linea venta */
+  cantidad:number=0;
+  precio_unitario:number=0;
+  importe:number=0;
+  idVenta:string='';
+  idArticulo:string='';
+
+  articulo: any;
+
+  constructor(private router:Router, private articulosRealService: ArticulosRealService, private lineaVentaService: LineaVentaService){}
 
   ngOnInit(): void {
-      
+    this.idVenta=localStorage.getItem('idVenta') as string;
+    this.nombreCli=localStorage.getItem('nombreCli')as string;
+    this.apellidoCli=localStorage.getItem('apellidoCli')as string;
+
+    this.articulosRealService.getAll().subscribe({
+      next: (data: any) => {
+        this.articulosVenta = data.map((articulo: any) => ({
+          ...articulo,
+          cantidad: 0
+        }));
+      }
+    });
   }
+
+
+  incrementarCantidad(articulo: any): void {
+    if (articulo.cantidad < articulo.stock) {
+      articulo.cantidad++;
+    }
+  }
+
+  decrementarCantidad(articulo: any): void {
+    if (articulo.cantidad > 0) {
+      articulo.cantidad--;
+    }
+  }
+
+  calcularImporte(articulo: any): number {
+    return articulo.cantidad * articulo.precioCliente;
+  }
+
+  crearLineaventa(): void{
+
+
+
+    const articulos = this.articulosVenta
+    .filter(a => a.cantidad && a.cantidad > 0)
+    .map(a => ({
+      cantidad: a.cantidad,
+      precio_unitario: a.precioCliente,
+      importe: this.calcularImporte(a),
+      idVenta: this.idVenta,
+      idArticulo: a.id
+    }));
+
+    this.lineaVentaService.createLineaVenta(articulos).subscribe({
+      next: (data: any) => {
+          console.log(data);
+          console.log(articulos);
+          this.router.navigate(['/ventas/factura']);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+
+  }
+
 }
