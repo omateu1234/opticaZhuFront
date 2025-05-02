@@ -35,6 +35,11 @@ import { ArticulosComponent } from './articulos/articulos.component';
 import { VerTodosComponent } from './articulos/ver-todos/ver-todos.component';
 import { PerfilArticuloComponent } from './articulos/perfil-articulo/perfil-articulo.component';
 /***************************************************************************** */
+
+/***Ventas */
+import { VentasComponent } from './ventas/ventas.component';
+import { VerTodosComponent as VerTodosVentasComponent } from './ventas/ver-todos/ver-todos.component';
+import { PerfilVentaComponent } from './ventas/perfil-venta/perfil-venta.component';
 /***Guards */
 import { auxiliarGuard } from './guards/auxiliar.guard';
 import { adminGuard } from './guards/admin.guard';
@@ -113,6 +118,20 @@ component: LoginComponent,
         path:'perfil-articulo',
         component: PerfilArticuloComponent
       }
+  ]
+},
+{
+  path: 'ventas',
+  component: VentasComponent,
+  children: [
+    {
+      path: 'ver-todos',
+      component: VerTodosVentasComponent,
+    },
+    {
+      path: 'perfil-venta',
+      component: PerfilVentaComponent
+    }
   ]
 },
 {

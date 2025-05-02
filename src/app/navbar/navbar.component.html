@@ -69,14 +69,14 @@
         </li>
         <li class="nav-item sidebarLi">
           <div class="optionText">
-              <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="pedidosSubList">Pedidos</a>
+              <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="pedidosSubList">Ventas</a>
           </div>
           <ul class="collapse list-unstyled" id="pedidosSubList">
               <div class="submenu">
 
-                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Buscar Pedido</a></li>
-                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Crear Pedido</a></li>
-                  <li><a routerLink="">Ver los Pedidos</a></li>
+                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Buscar Venta</a></li>
+                  <li><a data-bs-toggle="modal" data-bs-target="#crearVenModal" style="cursor: pointer;">Realizar Venta</a></li>
+                  <li><a routerLink="/ventas/ver-todos">Ver las Ventas</a></li>
               </div>
           </ul>
       </li>
@@ -134,7 +134,7 @@
                     <div class="col-auto d-flex align-items-center ">
                         <h5 class="modal-title tituloModal " id="crearCliModalLabel ">Creación de Cliente</h5>
                     </div>
-                    <div class="col-auto ms-auto d-flex align-items-center "><button type="button " class="ms-auto btn-close " data-bs-dismiss="modal " aria-label="Close "></button></div>
+                    <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3 ">
@@ -381,5 +381,50 @@
       </div>
   </div>
 </div>
+
+  <!-- modal crear Venta -->
+  <div class="modal modal-lg fade" id="crearVenModal" tabindex="-1" aria-labelledby="crearVenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom py-2">
+                    <div class="col d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="crearVenModalLabel">Realiza la Venta</h5>
+                    </div>
+                    <div class="col-auto ms-auto">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form class="px-3" method="post">
+                    <div class="mb-3">
+                        <h5>Método de Pago:</h5>
+                        <select class="form-select" name="metodoPago" id="metodoPago" [(ngModel)]="metodoPago">
+                            <option value="transferencia">Transferencia</option>
+                            <option value="tarjeta">Tarjeta</option>
+                            <option value="efectivo">Efectivo</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <h5>Fecha:</h5>
+                        <input class="form-control" type="date" name="fecha" [(ngModel)]="fecha">
+                    </div>
+
+                    <h5>Cliente:</h5>
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" placeholder="Ingresa el DNI del cliente" [(ngModel)]="dniCliente" name="dniCliente">
+                        <button class="btn btn-primary" (click)="crearVenta()">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 

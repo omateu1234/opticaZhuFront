@@ -5,6 +5,7 @@ import { EmpleadosService } from '../Servicios/empleados.service';
 import { ClientesService } from '../Servicios/clientes.service';
 import { ArticulosRealService } from '../Servicios/articulos-real.service';
 import { ProveedoresService } from '../Servicios/proveedores.service';
+import { VentasService } from '../Servicios/ventas.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
@@ -25,6 +26,7 @@ idEmpleado: any;
   constructor(private empleadosService: EmpleadosService,
               private clientesService:ClientesService,
               private articulosRealService: ArticulosRealService ,
+              private ventasService: VentasService,
               private proveedoresService: ProveedoresService,
               private router:Router) { }
 
@@ -34,10 +36,17 @@ idEmpleado: any;
   cliente: any;
   proveedores: any=[];
 
+  /**Formulario Articulo */
   nombre:string='';
   descripcion:string='';
   precioProveedor: number=0;
   idProveedor:string='';
+  /************************** */
+
+  /**Formulario Venta */
+  fecha:string='';
+  metodoPago:string='';
+  dniCliente:string='';
 
 
   ngOnInit(): void {
@@ -126,6 +135,29 @@ idEmpleado: any;
         }
       });
       console.log(articulo);
+    }
+
+    crearVenta(){
+      const venta={
+        fecha:this.fecha,
+        metodoPago:this.metodoPago,
+        dniCliente:this.dniCliente
+      }
+      this.ventasService.createVenta(venta).subscribe({
+        next: (data: any) => {
+            console.log(data);
+            this.router.navigate(['/ventas/ver-todos']);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      });
+       //Borrar Modal
+       document.querySelector('.modal-backdrop')?.remove();
+       document.getElementById('crearVenModal')?.classList.remove('show');
+       document.body.classList.remove('modal-open');
+       document.querySelector('.modal-backdrop')?.remove();
+      console.log(venta);
     }
   }
 
