@@ -13,7 +13,7 @@ export class LineaVentaService {
   constructor(private http: HttpClient ) { }
 
 
-  createLineaVenta(lineaVenta: any): Observable<any> {
-    return this.http.post<any>(this.crearLineaVenta, lineaVenta);
+  createLineaVenta(articulosPost: { articulos: any[]}): Observable<any> {
+    return this.http.post<any[]>(this.crearLineaVenta, articulosPost);
   }
 }

@@ -65,8 +65,6 @@ export class PerfilVentaComponent implements OnInit{
 
   crearLineaventa(): void{
 
-
-
     const articulos = this.articulosVenta
     .filter(a => a.cantidad && a.cantidad > 0)
     .map(a => ({
@@ -77,10 +75,16 @@ export class PerfilVentaComponent implements OnInit{
       idArticulo: a.id
     }));
 
-    this.lineaVentaService.createLineaVenta(articulos).subscribe({
+    const articulosPost={
+      articulos: articulos
+    }
+
+    console.log(articulos);
+
+    this.lineaVentaService.createLineaVenta(articulosPost).subscribe({
       next: (data: any) => {
           console.log(data);
-          console.log(articulos);
+          console.log(articulosPost);
           this.router.navigate(['/ventas/factura']);
       },
       error: (e) => {
