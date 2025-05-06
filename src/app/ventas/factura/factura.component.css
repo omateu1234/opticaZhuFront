@@ -1,0 +1,40 @@
+.tabla-articulos {
+  width: 63%;
+  border-collapse: separate; /* Importante para que el border-radius funcione */
+  border-spacing: 5px; /* Elimina espacios entre celdas */
+  border: none; /* Borde general de la tabla */
+  border-radius: 12px; /* Redondear toda la tabla */
+  overflow: hidden; /* Evita que las celdas sobresalgan de la tabla */
+  table-layout: fixed;
+  word-wrap: break-word;
+  border-collapse: collapse;
+
+}
+
+/* Encabezados */
+.tabla-articulos th {
+  background-color: #FFBD62;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #FFBD62;
+}
+
+/* Celdas */
+.tabla-articulos td {
+  background-color: #FFDA9F;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  border: 1px solid #dee2e6;
+}
+
+.tabla-articulos tbody tr:nth-child(even) td {
+  background-color: #FFDA9F;
+  color: black;
+}
+
+.tabla-articulos tbody tr:nth-child(odd) td {
+  background-color: #FFF;
+  color: black;
+}
+

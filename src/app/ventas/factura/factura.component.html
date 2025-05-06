@@ -1,1 +1,55 @@
-<p>factura works!</p>
+<div class="container-flex containerPagina">
+  <div class="row w-100 mb-4">
+      <div class="col-auto me-auto">
+          <h1 class="tituloPagina">Factura  </h1>
+      </div>
+      <div class="col-auto">
+        <a onclick="location.href='/ventas/ver-todos'" class="btn-close">
+          <i class="fa-solid fa-x fa-lg"></i>
+        </a>
+  </div>
+
+  <form method="post">
+    <p><strong>Número de Factura:</strong> {{ datosFactura['idVenta'] }}</p>
+    <p><strong>Fecha:</strong> {{ datosFactura?.fecha | date:'dd-MM-yyyy' }}</p>
+    <p><strong>Estado del Pago:</strong> {{ datosFactura['estadoPago'] }}</p>
+    <h2>Cliente</h2>
+    <p><strong>Nombre:</strong> {{ datosFactura['cliente'] }} {{ datosFactura['apellido']}}</p>
+    <p><strong>DNI:</strong> {{ datosFactura['dni'] }}</p>
+    <p><strong>Teléfono:</strong> {{ datosFactura['telefono'] }}</p>
+    <p><strong>Código Postal:</strong> {{ datosFactura['codPostal'] }}</p>
+    <h2>Detalles de la Venta</h2>
+
+    <table class="tabla-articulos">
+      <thead>
+      <tr>
+        <th>Artículo</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Importe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let linea of datosFactura['lineas']">
+          <td>{{ linea['articulo'] }}</td>
+          <td>{{ linea['cantidad'] }}</td>
+          <td>{{ (linea['precio_unitario']) }}€</td>
+          <td>{{ (linea['importe']) }}</td>
+      </tr>
+
+      <p><strong>Subtotal:</strong> {{ (datosFactura['subtotal']) }}€</p>
+      <p><strong>Total (IVA incluido):</strong> {{ (datosFactura['total']) }}€</p>
+    </tbody>
+    </table>
+
+
+        <input type="hidden" name="fecha" value="{{datosFactura['fecha']}}" >
+        <input type="hidden" name="estadoPago" value="pagado">
+        <input type="hidden" name="idPedido" value="{{datosFactura['idVenta']}}">
+
+    <div class="col d-flex justify-content-end my-5">
+      <button class="btn btn-primary botonNuevaCita" (click)="pagarFactura()">Pagar</button>
+  </div>
+  </form>
+
+</div>

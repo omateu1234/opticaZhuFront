@@ -64,15 +64,14 @@ export class PerfilVentaComponent implements OnInit{
   }
 
   crearLineaventa(): void{
-
     const articulos = this.articulosVenta
-    .filter(a => a.cantidad && a.cantidad > 0)
-    .map(a => ({
-      cantidad: a.cantidad,
-      precio_unitario: a.precioCliente,
-      importe: this.calcularImporte(a),
+    .filter(art => art.cantidad && art.cantidad > 0)
+    .map(art => ({
+      cantidad: art.cantidad,
+      precio_unitario: art.precioCliente,
+      importe: this.calcularImporte(art),
       idVenta: this.idVenta,
-      idArticulo: a.id
+      idArticulo: art.id
     }));
 
     const articulosPost={
