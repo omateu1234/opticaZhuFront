@@ -9,15 +9,15 @@ export class CitasService {
 
   private fecha:string='';
 
-  private apiurl='http://127.0.0.1:8000/api/crearCita';
+  private apiurl='http://54.174.102.93/api/crearCita';
 
-  //private citas='http://127.0.0.1:8000/api/citas';
+  //private citas='http://54.174.102.93/api/citas';
 
-  private citas='http://127.0.0.1:8000/api/citasOptica';
+  private citas='http://54.174.102.93/api/citasOptica';
 
-  private citasOcupadas='http://127.0.0.1:8000/api/citasOcupadas';
+  private citasOcupadas='http://54.174.102.93/api/citasOcupadas';
 
-  private borrarCita= 'http://127.0.0.1:8000/api/borrarCita';
+  private borrarCita= 'http://54.174.102.93/api/borrarCita';
 
  /*  private citas: Citas[] = [
     { hora: '08:00', nombre: 'Juan Pérezoso', motivocita: 'Cambio de graduación' },
@@ -38,7 +38,7 @@ export class CitasService {
     return this.http.get<any[]>(this.citas);
   }
 
-  getAll(id: any): Observable<any[]> { 
+  getAll(id: any): Observable<any[]> {
     const idOptica= id ?? 1;  //Si es nulo envia el 1
     return this.http.get<any[]>(this.citas, {params: {idOptica}} );
   }

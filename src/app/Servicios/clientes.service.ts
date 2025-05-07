@@ -8,13 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ClientesService {
 
-  private clientes='http://127.0.0.1:8000/api/clientes';
+  private clientes='http://54.174.102.93/api/clientes';
 
-  private buscar='http://127.0.0.1:8000/propietario/buscarCli';
+  private buscar='http://54.174.102.93/propietario/buscarCli';
 
-  private citasCliente='http://127.0.0.1:8000/api/citasCliente';
+  private citasCliente='http://54.174.102.93/api/citasCliente';
 
-  private borrarCliente='http://127.0.0.1:8000/api/borrarCliente';
+  private borrarCliente='http://54.174.102.93/api/borrarCliente';
 
   constructor(private http: HttpClient) { }
 

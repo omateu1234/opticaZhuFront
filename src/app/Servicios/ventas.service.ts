@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class VentasService {
 
-  private ventas='http://127.0.0.1:8000/api/ventas';
+  private ventas='http://54.174.102.93/api/ventas';
 
-  private crearVenta='http://127.0.0.1:8000/api/crearVenta';
+  private crearVenta='http://54.174.102.93/api/crearVenta';
 
 
   constructor(private http: HttpClient ) { }

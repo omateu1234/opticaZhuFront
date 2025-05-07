@@ -9,7 +9,7 @@ import { Optica } from '../interfaces/optica.interface';
 export class ArticulosService {
 
 
-  private apiurl = 'http://127.0.0.1:8000/api/opticas';
+  private apiurl = 'http://54.174.102.93/api/opticas';
 
 
   constructor(private http: HttpClient) { }

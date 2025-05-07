@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class EmpleadosService {
 
-  private apiurl = 'http://127.0.0.1:8000/api/empleadosOptica';
-  private apibuscarEmpleado = 'http://127.0.0.1:8000/api/buscarEmpleadoApi';
-  private actualizarEmpleado = 'http://127.0.0.1:8000/api/actualizarEmpleadoApi';
+  private apiurl = 'http://54.174.102.93/api/empleadosOptica';
+  private apibuscarEmpleado = 'http://54.174.102.93/api/buscarEmpleadoApi';
+  private actualizarEmpleado = 'http://54.174.102.93/api/actualizarEmpleadoApi';
 
 
   constructor(private http: HttpClient) { }
@@ -19,7 +19,7 @@ export class EmpleadosService {
   }
 
   getEmpleado(id: any): Observable<any[]> {
-    return this.http.get<any[]>(this.apibuscarEmpleado, {params: {id}}); 
+    return this.http.get<any[]>(this.apibuscarEmpleado, {params: {id}});
   }
 
   getAll(id: any): Observable<any[]> {
