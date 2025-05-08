@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { FacturaService } from '../../Servicios/factura.service';
 import { jsPDF} from 'jspdf';
 import  html2canvas  from 'html2canvas';
+import { ignoreElements } from 'rxjs';
+import { element } from 'angular';
 
 
 @Component({
@@ -74,8 +76,10 @@ export class FacturaComponent implements OnInit {
       scale: 2 // Escala para mejorar la calidad de la captura
     };
 
-    html2canvas(DATA, options).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png'); // Convierte el canvas a una imagen en formato PNG
+    html2canvas(DATA, {ignoreElements: (element) => {
+      return element.classList.contains('cerrar') || element.classList.contains('botonNuevaCita')
+    }}).then((canvas) => {
+      const imgData = canvas.toDataURL('image/svg'); // Convierte el canvas a una imagen en formato PNG
       console.log(DATA);
       const imgWidth = 190; // Ancho de la imagen en mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula la altura proporcional de la imagen
