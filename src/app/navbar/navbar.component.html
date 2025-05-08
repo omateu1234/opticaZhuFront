@@ -74,7 +74,7 @@
           <ul class="collapse list-unstyled" id="pedidosSubList">
               <div class="submenu">
 
-                  <li><a data-bs-toggle="modal" data-bs-target="#" style="cursor: pointer;">Buscar Venta</a></li>
+                  <li><a data-bs-toggle="modal" data-bs-target="#buscarVenModal" style="cursor: pointer;">Buscar Venta</a></li>
                   <li><a data-bs-toggle="modal" data-bs-target="#crearVenModal" style="cursor: pointer;">Realizar Venta</a></li>
                   <li><a routerLink="/ventas/ver-todos">Ver las Ventas</a></li>
               </div>
@@ -101,8 +101,8 @@
                     <div class="col-auto d-flex align-items-center ">
                         <h5 class="modal-title tituloModal " id="exampleModalLabel ">Busqueda de Cliente</h5>
                     </div>
-                    <div class="col-auto ms-auto d-flex align-items-center "><button type="button " class="ms-auto btn-close " data-bs-dismiss="modal " aria-label="Close "></button></div>
-                </div>
+                    <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                  </div>
             </div>
             <div class="modal-body mt-2 mb-3 ">
                 <form class="form-cli row ">
@@ -188,8 +188,8 @@
                     <div class="col-auto d-flex align-items-center ">
                         <h5 class="modal-title tituloModal " id="buscarEmpModalLabel ">Busqueda de Empleados</h5>
                     </div>
-                    <div class="col-auto ms-auto d-flex align-items-center "><button type="button " class="ms-auto btn-close " data-bs-dismiss="modal " aria-label="Close "></button></div>
-                </div>
+                    <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                  </div>
             </div>
             <div class="modal-body mt-2 mb-3 ">
                 <form class="form-emp row ">
@@ -425,6 +425,35 @@
     </div>
 </div>
 
+  <!-- modal buscar Venta -->
+<div class=" modal fade " id="buscarVenModal" tabindex="-1" aria-labelledby="exampleModalLabel " aria-hidden="true ">
+  <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content ">
+          <div class="modal-header border-0 ">
+              <div class="w-100 row mx-1 border-bottom pt-2 pb-3 ">
+                  <div class="col-auto d-flex align-items-center ">
+                      <h5 class="modal-title tituloModal " id="exampleModalLabel ">Busqueda de Cliente</h5>
+                  </div>
+                  <div class="col-auto ms-auto d-flex align-items-center justify-content-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+          </div>
+          <div class="modal-body mt-2 mb-3 ">
+              <form class="form-cli row ">
+                  <div class="col px-2 ">
+                      <div class="row my-2 ">
+                          <div class="col ">
+                              <div class="input-group px-3 ">
+                                  <input class="form-control " type="text " placeholder="Búsqueda por DNI " [(ngModel)]="dni" name="dni">
+                                  <button class="btn btn-primary botonInputModal " (click)="buscarVenta()"><i class="fa-solid fa-angle-right fa-2x "></i></button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
 
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
 
 

@@ -163,5 +163,24 @@ idEmpleado: any;
        document.querySelector('.modal-backdrop')?.remove();
       console.log(venta);
     }
-  }
+
+    buscarVenta(){
+      //console.log(this.dni);
+      localStorage.setItem('dni', this.dni);
+      this.clientesService.ventasCli(this.dni).subscribe({
+        next: (data: any) => {
+            console.log(data);
+             //Borrar Modal
+            document.querySelector('.modal-backdrop')?.remove();
+            document.getElementById('crearVenModal')?.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            document.querySelector('.modal-backdrop')?.remove();
+            this.router.navigate(['/clientes/ventas-cliente']);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      })
+    }
+}
 

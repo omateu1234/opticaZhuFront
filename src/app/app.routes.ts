@@ -9,6 +9,7 @@ import { BuscarCliComponent } from './clientes/buscar/buscar.component';
 import { CrearCliComponent } from './clientes/crear/crear.component';
 import { VerTodosCliComponent } from './clientes/ver-todos/ver-todos.component';
 import { ClientePerfilComponent } from './clientes/cliente-perfil/cliente-perfil.component';
+import { VentasComponent as ClientesVentasComponent } from './clientes/ventas/ventas.component';
 /******************************************************************************** */
 /**Empleados */
 import { EmpleadosComponent } from './empleados/empleados.component';
@@ -82,6 +83,10 @@ component: LoginComponent,
     {
       path: 'perfil-cliente',
       component: ClientePerfilComponent,
+    },
+    {
+      path: 'ventas-cliente',
+      component: ClientesVentasComponent
     }
   ]
 },

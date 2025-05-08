@@ -1,0 +1,22 @@
+<div class="container-flex containerPagina">
+  <div class="row w-100 mb-4">
+      <div class="col-auto me-auto">
+          <h1 class="tituloPagina">Compras de {{nombreCli}} {{apellidoCli}}</h1>
+      </div>
+      <div class="col d-flex justify-content-end">
+          <a onclick="location.href='/ventas/ver-todos'" style="cursor: pointer;"><i class="fa-solid fa-x fa-lg"></i></a>
+      </div>
+  </div>
+
+
+  <div class="col">
+    <h3>Compras</h3>
+    <table datatable [dtOptions]="dtOptions" id="ventas"class="empleadosTable table table-stripped">
+      <thead>
+      </thead>
+      <tbody>
+
+      </tbody>
+  </table>
+</div>
+</div>

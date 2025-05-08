@@ -49,7 +49,6 @@ export class VerTodosComponent  implements OnInit{
       ],
       rowCallback: (row: Node, data: any, index: number) => {
         // Cast row to HTMLElement to access querySelector
-        //const rowElement = row as HTMLElement;
         const rowElement = row as HTMLElement;
         // Ensure the last cell (Actions column) is styled
 

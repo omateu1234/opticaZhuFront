@@ -16,6 +16,8 @@ export class ClientesService {
 
   private borrarCliente='http://127.0.0.1:8000/api/borrarCliente';
 
+  private ventasCliente='http://127.0.0.1:8000/api/clienteVentas';
+
   constructor(private http: HttpClient) { }
 
   retornar(): Observable<any[]> {
@@ -36,6 +38,10 @@ export class ClientesService {
 
   borrarCli(id: string){
     return this.http.delete(this.borrarCliente, {params: {id}});
+  }
+
+  ventasCli(dni: string): Observable<any[]>{
+    return this.http.get<any[]>(this.ventasCliente, {params: {dni}});
   }
 
   /* private data=new BehaviorSubject<any>(null);
