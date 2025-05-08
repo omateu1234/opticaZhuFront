@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FacturaService } from '../../Servicios/factura.service';
+import { jsPDF} from 'jspdf';
+import  html2canvas  from 'html2canvas';
 
 
 @Component({
@@ -54,6 +56,7 @@ export class FacturaComponent implements OnInit {
     this.facturaService.payFactura(factura).subscribe({
       next: (data: any) => {
           console.log(data);
+          this.generarPdf();
           this.router.navigate(['/ventas/ver-todos']);
       },
       error: (e) => {
@@ -61,5 +64,25 @@ export class FacturaComponent implements OnInit {
       }
     });
     console.log(factura);
+
+  }
+
+  generarPdf(): void{
+    const DATA: HTMLElement = document.getElementById('factura') as HTMLElement; // Selecciona el contenedor de la factura
+    const doc = new jsPDF('p', 'mm', 'a4'); // Crea un documento PDF en formato A4
+    const options = {
+      scale: 2 // Escala para mejorar la calidad de la captura
+    };
+
+    html2canvas(DATA, options).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png'); // Convierte el canvas a una imagen en formato PNG
+      console.log(DATA);
+      const imgWidth = 190; // Ancho de la imagen en mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula la altura proporcional de la imagen
+      const position = 10; // Margen superior
+
+      doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight); // Agrega la imagen al PDF
+      doc.save(`Factura_${this.idVenta}.pdf`); // Guarda el archivo PDF con un nombre dinámico
+    });
   }
 }

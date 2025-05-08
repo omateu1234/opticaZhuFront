@@ -26,6 +26,8 @@ export class VerTodosComponent implements OnInit{
       serverSide: true,
       processing: true,
       ajax: (dataTablesParameters: any, callback: (data: any) => void) => {
+        const buscar = dataTablesParameters.search.value;
+        console.log("algo",buscar);
         this.ventasService.getAll().subscribe((resp: any) => {
           this.ventas = resp;
           callback({

@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ArticulosRealService {
 
-  private articulos='http://54.174.102.93/api/articulos';
+  private articulos='http://127.0.0.1:8000/api/articulos';
 
-  private buscarArticulo='http://54.174.102.93/api/buscarArticulo';
+  private buscarArticulo='http://127.0.0.1:8000/api/buscarArticulo';
 
-  private crearArticulo='http://54.174.102.93/api/crearArticulo';
+  private crearArticulo='http://127.0.0.1:8000/api/crearArticulo';
 
   constructor(private http: HttpClient ) { }
 
