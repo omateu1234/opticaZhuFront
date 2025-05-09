@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-opticas',
-  imports: [RouterOutlet, CommonModule],
+  imports: [CommonModule],
   templateUrl: './opticas.component.html',
   styleUrls: ['./opticas.component.css']
 })

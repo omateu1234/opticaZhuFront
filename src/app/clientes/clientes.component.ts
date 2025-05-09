@@ -4,7 +4,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-clientes',
-  imports: [RouterOutlet,RouterLink],
+  imports: [RouterOutlet,],
   templateUrl: './clientes.component.html',
   styleUrl: './clientes.component.css'
 })
