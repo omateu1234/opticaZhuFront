@@ -4,7 +4,6 @@ import { CitasService } from '../../Servicios/citas.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { htmlPrefilter } from 'jquery';
-import Swal, {SweetAlertOptions} from 'sweetalert2';
 @Component({
   selector: 'app-cliente-perfil',
   imports: [CommonModule],
@@ -28,7 +27,7 @@ export class ClientePerfilComponent implements OnInit {
   constructor(private clienteService:ClientesService, private router:Router, private citaService:CitasService) {}
 
   ngOnInit(): void {
-   
+
 
 
     this.idCli=localStorage.getItem('idCli') as string;
@@ -93,7 +92,7 @@ export class ClientePerfilComponent implements OnInit {
         document.body.classList.remove('modal-open');
         document.querySelector('.modal-backdrop')?.remove();
           //alert('Cliente Borrado');
-  
+
           Swal.fire({
             icon: "success",
             width: 400,
