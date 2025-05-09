@@ -3,7 +3,6 @@ import { ClientesService } from '../../Servicios/clientes.service';
 import { CitasService } from '../../Servicios/citas.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { htmlPrefilter } from 'jquery';
 @Component({
   selector: 'app-cliente-perfil',
   imports: [CommonModule],
@@ -68,16 +67,7 @@ export class ClientePerfilComponent implements OnInit {
       document.querySelector('.modal-backdrop')?.remove();
         //alert('Cliente Borrado');
 
-        Swal.fire({
-          icon: "success",
-          width: 400,
-          iconColor:'#176E63',
-          color: '#176E63',
-          background: '#9FF0DA',
-          titleText: "Cliente eliminado",
-          showConfirmButton: false,
-          timer: 1500,
-      });
+
       localStorage.clear();
         this.router.navigate(['/citas']);
       }
@@ -93,16 +83,7 @@ export class ClientePerfilComponent implements OnInit {
         document.querySelector('.modal-backdrop')?.remove();
           //alert('Cliente Borrado');
 
-          Swal.fire({
-            icon: "success",
-            width: 400,
-            iconColor:'#176E63',
-            color: '#176E63',
-            background: '#9FF0DA',
-            titleText: "Cita eliminada",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+
         location.reload();
       }
     })
