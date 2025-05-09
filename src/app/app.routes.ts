@@ -5,16 +5,12 @@ import { CitasComponent } from './citas/citas.component';
 /******************************************************** */
 /**Clientes */
 import { ClientesComponent } from './clientes/clientes.component';
-import { BuscarCliComponent } from './clientes/buscar/buscar.component';
-import { CrearCliComponent } from './clientes/crear/crear.component';
 import { VerTodosCliComponent } from './clientes/ver-todos/ver-todos.component';
 import { ClientePerfilComponent } from './clientes/cliente-perfil/cliente-perfil.component';
 import { VentasComponent as ClientesVentasComponent } from './clientes/ventas/ventas.component';
 /******************************************************************************** */
 /**Empleados */
 import { EmpleadosComponent } from './empleados/empleados.component';
-import { BuscarComponent } from './empleados/buscar/buscar.component';
-import { CrearComponent } from './empleados/crear/crear.component';
 import { VerTodosEmpleadosComponent } from './empleados/ver-todos/ver-todos.component';
 import { PerfilEmpleadoComponent } from "./empleados/perfil-empleado/perfil-empleado.component";
 /************************************************************************************************ */
