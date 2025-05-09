@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ArticulosRealService } from '../../Servicios/articulos-real.service';
 import { LineaVentaService } from '../../Servicios/linea-venta.service';
+import { VentasService } from '../../Servicios/ventas.service';
 import { Router } from '@angular/router';
 import { tick } from '@angular/core/testing';
 
@@ -29,7 +30,10 @@ export class PerfilVentaComponent implements OnInit{
 
   articulo: any;
 
-  constructor(private router:Router, private articulosRealService: ArticulosRealService, private lineaVentaService: LineaVentaService){}
+  constructor(private router:Router,
+              private articulosRealService: ArticulosRealService,
+              private lineaVentaService: LineaVentaService,
+              private ventasService: VentasService){}
 
   ngOnInit(): void {
     this.idVenta=localStorage.getItem('idVenta') as string;
@@ -90,7 +94,23 @@ export class PerfilVentaComponent implements OnInit{
         console.log(e);
       }
     })
+  }
 
+  cancelarVenta(){
+    const payload = {
+      id_venta: this.idVenta // Cambia el nombre del campo para que coincida con el esperado por el backend
+    };
+
+    console.log(this.idVenta);
+    this.ventasService.cancelVenta(payload).subscribe({
+      next: (data: any) => {
+          console.log(data);
+          this.router.navigate(['/ventas/ver-todos']);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
 
 }

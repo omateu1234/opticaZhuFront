@@ -11,6 +11,8 @@ export class VentasService {
 
   private crearVenta='http://127.0.0.1:8000/api/crearVenta';
 
+  private cancelarVenta='http://127.0.0.1:8000/api/cancelarVenta';
+
 
   constructor(private http: HttpClient ) { }
 
@@ -20,5 +22,9 @@ export class VentasService {
 
   createVenta(venta: any): Observable<any> {
     return this.http.post<any>(this.crearVenta, venta);
+  }
+
+  cancelVenta(payload: any){
+    return this.http.patch(this.cancelarVenta, {params: {payload}});
   }
 }

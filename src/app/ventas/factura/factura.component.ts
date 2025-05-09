@@ -58,6 +58,12 @@ export class FacturaComponent implements OnInit {
     this.facturaService.payFactura(factura).subscribe({
       next: (data: any) => {
           console.log(data);
+           //Borrar Modal
+           document.querySelector('.modal-backdrop')?.remove();
+           document.getElementById('crearVenModal')?.classList.remove('show');
+           document.body.classList.remove('modal-open');
+           document.querySelector('.modal-backdrop')?.remove();
+           this.router.navigate(['/clientes/ventas-cliente']);
           this.generarPdf();
           this.router.navigate(['/ventas/ver-todos']);
       },
@@ -66,7 +72,7 @@ export class FacturaComponent implements OnInit {
       }
     });
     console.log(factura);
-
+    localStorage.clear();
   }
 
   generarPdf(): void{
@@ -77,7 +83,7 @@ export class FacturaComponent implements OnInit {
     };
 
     html2canvas(DATA, {ignoreElements: (element) => {
-      return element.classList.contains('cerrar') || element.classList.contains('botonNuevaCita')
+      return element.classList.contains('cerrar') || element.classList.contains('botonNuevaCita') || element.classList.contains('modal');
     }}).then((canvas) => {
       const imgData = canvas.toDataURL('image/svg'); // Convierte el canvas a una imagen en formato PNG
       console.log(DATA);
@@ -85,7 +91,7 @@ export class FacturaComponent implements OnInit {
       const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula la altura proporcional de la imagen
       const position = 10; // Margen superior
 
-      doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight); // Agrega la imagen al PDF
+      doc.addImage(imgData, 'SVG', 10, position, imgWidth, imgHeight); // Agrega la imagen al PDF
       doc.save(`Factura_${this.idVenta}.pdf`); // Guarda el archivo PDF con un nombre dinámico
     });
   }
