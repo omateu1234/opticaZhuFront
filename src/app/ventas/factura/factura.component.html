@@ -12,13 +12,25 @@
   <form method="post">
     <p><strong>Número de Factura:</strong> {{ datosFactura['idVenta'] }}</p>
     <p><strong>Fecha:</strong> {{ datosFactura?.fecha | date:'dd-MM-yyyy' }}</p>
-    <p><strong>Metodo de Pago:</strong> {{ datosFactura['metodoPago'] }}</p>
-    <p><strong>Estado del Pago:</strong> {{ datosFactura['estadoPago'] }}</p>
-    <h2>Cliente</h2>
-    <p><strong>Nombre:</strong> {{ datosFactura['cliente'] }} {{ datosFactura['apellido']}}</p>
-    <p><strong>DNI:</strong> {{ datosFactura['dni'] }}</p>
-    <p><strong>Teléfono:</strong> {{ datosFactura['telefono'] }}</p>
-    <p><strong>Código Postal:</strong> {{ datosFactura['codPostal'] }}</p>
+    <!-- <p><strong>Metodo de Pago:</strong> {{ datosFactura['metodoPago'] }}</p>
+    <p><strong>Estado del Pago:</strong> {{ datosFactura['estadoPago'] }}</p> -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Óptica</h2>
+        <p><strong>Sitio:</strong> {{ datosFactura['optica'] }}</p>
+        <p><strong>Dirección:</strong> {{ datosFactura['direccion'] }}</p>
+        <p><strong>Teléfono:</strong> {{ datosFactura['telefonoOptica'] }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ datosFactura['correo'] }}</p>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Cliente</h2>
+        <p><strong>Nombre:</strong> {{ datosFactura['cliente'] }} {{ datosFactura['apellido'] }}</p>
+        <p><strong>DNI:</strong> {{ datosFactura['dni'] }}</p>
+        <p><strong>Teléfono:</strong> {{ datosFactura['telefono'] }}</p>
+        <p><strong>Código Postal:</strong> {{ datosFactura['codPostal'] }}</p>
+      </div>
+    </div>
     <h2>Detalles de la Venta</h2>
 
     <table class="tabla-articulos">
@@ -35,7 +47,7 @@
           <td>{{ linea['articulo'] }}</td>
           <td>{{ linea['cantidad'] }}</td>
           <td>{{ (linea['precio_unitario']) }}€</td>
-          <td>{{ (linea['importe']) }}</td>
+          <td>{{ (linea['importe']) }}€</td>
       </tr>
 
       <p><strong>Subtotal:</strong> {{ (datosFactura['subtotal']) }}€</p>
@@ -72,32 +84,34 @@
               <form class="form-cli row" method="post" >
                   <div class="col px-2">
                         <div *ngIf="datosFactura['metodoPago'] == 'transferencia'">
-                          <label class="col-form-label">IBAN</label>
-                          <input class="form-control" type="text" pattern="^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$" title="Por favor, introduce un IBAN válido.">
+                          <label class="col-form-label">IBAN:</label>
+                          <input class="form-control" type="text" [(ngModel)]="iban" pattern="^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$" title="Por favor, introduce un IBAN válido.">
+
+
                         </div>
 
                         <div *ngIf="datosFactura['metodoPago'] == 'tarjeta'">
                           <label class="col-form-label">Tarjeta de Crédito</label>
-                          <input class="form-control" type="text" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35[0-9]{3})[0-9]{11})$" title="Por favor, introduce un número de tarjeta de crédito válido.">
+                          <input class="form-control" type="text" [(ngModel)]="tarjeta" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35[0-9]{3})[0-9]{11})$" title="Por favor, introduce un número de tarjeta de crédito válido.">
 
                           <label class="col-form-label">Fecha de Caducidad (MM/YY)</label>
-                          <input class="form-control" type="text" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" title="Por favor, introduce una fecha de caducidad válida." placeholder="MM/YY">
+                          <input class="form-control" type="text" [(ngModel)]="caducidad" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" title="Por favor, introduce una fecha de caducidad válida." placeholder="MM/YY">
 
                           <label class="col-form-label">Código de Seguridad (CVC)</label>
-                          <input class="form-control" type="text" pattern="^[0-9]{3,4}$" title="Por favor, introduce un CVC válido.">
+                          <input class="form-control" type="text" [(ngModel)]="cvc" pattern="^[0-9]{3,4}$" title="Por favor, introduce un CVC válido.">
                         </div>
 
                       <input type="hidden" name="fecha" value="{{datosFactura['fecha']}}">
                       <input type="hidden" name="estadoPago" value="pagado">
                       <input type="hidden" name="idPedido" value="{{datosFactura['idPedido']}}">
-                      
+
                       <div class="row my-2">
                           <div class="col d-flex justify-content-center">
-                              <button class="btn btn-primary botonNuevaCita me-4" (click)="pagarFactura()">Pagar</button>
+                              <button *ngIf="datosFactura['metodoPago'] == 'transferencia'" class="btn btn-primary botonNuevaCita me-4" (click)="comprobarIban()" type="submit">Pagar</button>
+                              <button *ngIf="datosFactura['metodoPago'] == 'tarjeta'" class="btn btn-primary botonNuevaCita me-4" (click)="comprobarTarjeta()" type="submit">Pagar</button>
                           </div>
                       </div>
                   </div>
-
               </form>
           </div>
       </div>

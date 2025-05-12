@@ -21,6 +21,7 @@ idEmpleado: any;
   empleado: any = [];
   nombreEmpleado:string = localStorage.getItem('nombreEmpleado') || '';
   rol:string = localStorage.getItem('rolUser') || '';
+  idOptica= localStorage.getItem('idOptica') ?? 1;
 
 
   constructor(private empleadosService: EmpleadosService,
@@ -135,7 +136,7 @@ idEmpleado: any;
         }
       });
       document.querySelector('.modal-backdrop')?.remove();
-      document.getElementById('crearVenModal')?.classList.remove('show');
+      document.getElementById('crearArtModal')?.classList.remove('show');
       document.body.classList.remove('modal-open');
       document.querySelector('.modal-backdrop')?.remove();
       console.log(articulo);
@@ -145,7 +146,8 @@ idEmpleado: any;
       const venta={
         fecha:this.fecha,
         metodoPago:this.metodoPago,
-        dniCliente:this.dniCliente
+        dniCliente:this.dniCliente,
+        idOptica:this.idOptica
       }
       this.ventasService.createVenta(venta).subscribe({
         next: (data: any) => {

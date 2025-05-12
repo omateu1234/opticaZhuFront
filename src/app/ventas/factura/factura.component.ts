@@ -25,6 +25,12 @@ export class FacturaComponent implements OnInit {
   estadoPago:string='';
   idVenta: string='';
 
+  iban:string='';
+  tarjeta:string='';
+  caducidad:string='';
+  cvc:string='';
+
+
 
   constructor(private router:Router, private facturaService:FacturaService){}
 
@@ -49,11 +55,37 @@ export class FacturaComponent implements OnInit {
     });
   }
 
+  comprobarIban(){
+    const ibanPattern = /^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$/;
+    if (this.iban.match(ibanPattern)) {
+      console.log('IBAN válido:', this.iban);
+      // Aquí puedes proceder con la lógica que se requiere si el IBAN es válido
+      this.pagarFactura();
+    } else {
+     alert('IBAN no válido');
+      // Lógica alternativa si el IBAN no es válido
+    }
+  }
+
+  comprobarTarjeta(){
+    const tarjetaPattern=/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35[0-9]{3})[0-9]{11})$/;
+
+    const caducidadPattern=/^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    const cvcPattern=/[0-9]{3,4}$/;
+
+    if(this.tarjeta.match(tarjetaPattern) && this.caducidad.match(caducidadPattern) && this.cvc.match(cvcPattern)){
+      this.pagarFactura();
+    }else{
+      console.log(this.tarjeta);
+      alert("Tarjeta no Válida");
+    }
+  }
+
   pagarFactura(){
     const factura={
       fecha:this.fecha,
       estadoPago:this.estadoPago,
-      idVenta:this.idVenta
+      idVenta:this.idVenta,
     }
     this.facturaService.payFactura(factura).subscribe({
       next: (data: any) => {
