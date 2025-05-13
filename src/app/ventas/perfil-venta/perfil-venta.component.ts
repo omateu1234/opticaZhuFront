@@ -17,6 +17,9 @@ import { tick } from '@angular/core/testing';
 })
 export class PerfilVentaComponent implements OnInit{
 
+  idOptica= localStorage.getItem('idOptica');
+
+
   nombreCli:string='';
   apellidoCli:string='';
   articulosVenta:any[]=[];
@@ -40,7 +43,7 @@ export class PerfilVentaComponent implements OnInit{
     this.nombreCli=localStorage.getItem('nombreCli')as string;
     this.apellidoCli=localStorage.getItem('apellidoCli')as string;
 
-    this.articulosRealService.getAll().subscribe({
+    this.articulosRealService.getArticulosByOptica(this.idOptica).subscribe({
       next: (data: any) => {
         this.articulosVenta = data.map((articulo: any) => ({
           ...articulo,

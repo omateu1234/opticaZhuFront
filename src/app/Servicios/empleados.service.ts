@@ -10,6 +10,7 @@ export class EmpleadosService {
   private apiurl = 'http://127.0.0.1:8000/api/empleadosOptica';
   private apibuscarEmpleado = 'http://127.0.0.1:8000/api/buscarEmpleadoApi';
   private actualizarEmpleado = 'http://127.0.0.1:8000/api/actualizarEmpleadoApi';
+  private opticaEmpleado= 'http://127.0.0.1:8000/api/opticaEmpleado';
 
 
   constructor(private http: HttpClient) { }
@@ -29,5 +30,9 @@ export class EmpleadosService {
 
   actualizaEmpleado(data:any): Observable<any[]> {
   return this.http.patch<any[]>(this.actualizarEmpleado, {params: {data}});
+  }
+
+  opticaEmple(id: any){
+      return this.http.get(this.opticaEmpleado, {params:{id}});
   }
 }

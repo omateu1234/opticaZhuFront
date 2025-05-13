@@ -1,10 +1,13 @@
 <div class=" d-flex">
     <div class="menu" id="menu">
-        <div class="logo"><img src="./assets/images/mininaranjiverdeTrayecto.svg" class="logo"></div>
-        <div type="button" class="btn containerUser " data-bs-toggle="collapse" href="#perfilOpciones" aria-expanded="false" aria-controls="perfilOpciones"><img src="./assets/images/user.svg" class="userLogo">
-            <p> {{nombreEmpleado}} </p>
-            <!--  role="button" -->
-            <!--  -->
+      <div class="logo"><img src="./assets/images/mininaranjiverdeTrayecto.svg" class="logo"></div>
+      <div type="button" class="btn containerUser " data-bs-toggle="collapse" href="#perfilOpciones" aria-expanded="false" aria-controls="perfilOpciones"><img src="./assets/images/user.svg" class="userLogo">
+        <p> {{nombreEmpleado}} </p>
+        <!--  role="button" -->
+        <!--  -->
+        <div class="optica-info">
+          <h5><strong>{{ optica?.nombre }}</strong></h5>
+        </div>
         </div>
 
         <div class="collapse perfilCollapse" id="perfilOpciones">
@@ -23,6 +26,7 @@
             <li class="nav-item sidebarLi">
                 <div class="optionText">
                     <a class="sidebar-optionA" routerLink="/citas">Citas</a>
+
                 </div>
                 <ul class="dropdown-menu">
                 </ul>

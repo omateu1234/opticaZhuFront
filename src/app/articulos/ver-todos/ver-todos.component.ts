@@ -16,6 +16,7 @@ import DataTables, { Config } from 'datatables.net';
 
 export class VerTodosComponent  implements OnInit{
 
+  idOptica= localStorage.getItem('idOptica');
   dtOptions: Config = {};
   articulos: any=[];
   articuloSeleccionado: any;
@@ -29,8 +30,10 @@ export class VerTodosComponent  implements OnInit{
       serverSide: true,
       processing: true,
       ajax: (dataTablesParameters: any, callback: (data: any) => void) => {
-        this.articulosRealService.getAll().subscribe((resp: any) => {
+        console.log("optica",this.idOptica);
+        this.articulosRealService.getArticulosByOptica(this.idOptica).subscribe((resp: any) => {
           this.articulos = resp;
+          console.log(this.articulos);
           callback({
             recordsTotal: resp.length, // Número total de empleados
             recordsFiltered: resp.length, // Número de empleados filtrados (puedes aplicar filtros si los tienes)

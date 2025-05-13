@@ -104,7 +104,7 @@ export class FacturaComponent implements OnInit {
       }
     });
     console.log(factura);
-    localStorage.clear();
+    //localStorage.clear();
   }
 
   generarPdf(): void{

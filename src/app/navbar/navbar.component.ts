@@ -21,7 +21,9 @@ idEmpleado: any;
   empleado: any = [];
   nombreEmpleado:string = localStorage.getItem('nombreEmpleado') || '';
   rol:string = localStorage.getItem('rolUser') || '';
-  idOptica= localStorage.getItem('idOptica') ?? 1;
+  idOptica= localStorage.getItem('idOptica');
+
+  optica:any={};
 
 
   constructor(private empleadosService: EmpleadosService,
@@ -56,12 +58,15 @@ idEmpleado: any;
     this.empleadosService.getEmpleado(this.idEmpleado).subscribe((data: any) => {
       this.empleado = data;
       //this.nombreEmpleado = this.empleado.nombre;
-      //console.log(data);
+      console.log("empleado",this.empleado);
     });
 
     this.conseguirProveedores();
 
     console.log(this.nombreEmpleado);
+    console.log(this.idOptica);
+
+    this.opticaEmpleado();
   }
   title = 'menuProyecto';
   toggleDropdown(event: Event): void {
@@ -69,8 +74,22 @@ idEmpleado: any;
     if (dropdown && dropdown.classList.contains('dropdown-menu')) {
       dropdown.classList.toggle('visible');
     }
+  }
 
-
+  opticaEmpleado(){
+    this.empleadosService.opticaEmple(this.idOptica).subscribe({
+      next: (data: any) => {
+        if (data.length > 0) {
+          this.optica = data[0]; // Asigna el primer elemento del array a `optica`
+          console.log("Óptica:", this.optica);
+        } else {
+          console.error("No se encontraron datos de la óptica.");
+        }
+      },
+      error: (e) => {
+        console.error("Error al obtener los datos de la óptica:", e);
+      }
+    })
   }
 
   cerrarSesion(){

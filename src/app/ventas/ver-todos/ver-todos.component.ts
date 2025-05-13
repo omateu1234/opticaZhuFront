@@ -17,6 +17,8 @@ export class VerTodosComponent implements OnInit{
   ventas: any=[];
   ventaSeleccionada: any;
 
+  idOptica= localStorage.getItem('idOptica');
+
   constructor(private ventasService: VentasService,private renderer: Renderer2 ){}
 
   ngOnInit(): void {
@@ -27,9 +29,10 @@ export class VerTodosComponent implements OnInit{
       processing: true,
       ajax: (dataTablesParameters: any, callback: (data: any) => void) => {
         const buscar = dataTablesParameters.search.value;
-        console.log("algo",buscar);
-        this.ventasService.getAll().subscribe((resp: any) => {
+        //console.log("algo",buscar);
+        this.ventasService.ventasOptica(this.idOptica).subscribe((resp: any) => {
           this.ventas = resp;
+          console.log("ventas", this.ventas);
           callback({
             recordsTotal: resp.length, // Número total de empleados
             recordsFiltered: resp.length, // Número de empleados filtrados (puedes aplicar filtros si los tienes)

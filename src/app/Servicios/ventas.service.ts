@@ -13,6 +13,8 @@ export class VentasService {
 
   private cancelarVenta='http://127.0.0.1:8000/api/cancelarVenta';
 
+  private venOptica='http://127.0.0.1:8000/api/ventasOptica';
+
 
   constructor(private http: HttpClient ) { }
 
@@ -26,5 +28,9 @@ export class VentasService {
 
   cancelVenta(payload: any){
     return this.http.patch(this.cancelarVenta, {params: {payload}});
+  }
+
+  ventasOptica(idOptica: any){
+    return this.http.get(this.venOptica, {params: {idOptica}});
   }
 }

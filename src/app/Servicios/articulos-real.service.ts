@@ -13,6 +13,8 @@ export class ArticulosRealService {
 
   private crearArticulo='http://127.0.0.1:8000/api/crearArticulo';
 
+  private articulosOpti='http://127.0.0.1:8000/api/articulosOptica';
+
   constructor(private http: HttpClient ) { }
 
   getAll(): Observable<any[]>{
@@ -25,5 +27,9 @@ export class ArticulosRealService {
 
   createArticulo(articulo: any): Observable<any> {
     return this.http.post<any>(this.crearArticulo, articulo);
+  }
+
+  getArticulosByOptica(idOptica: any): Observable<any[]>{
+    return this.http.get<any[]>(this.articulosOpti, {params: {idOptica}});
   }
 }

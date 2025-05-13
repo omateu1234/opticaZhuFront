@@ -11,6 +11,7 @@ export class ArticulosService {
   private apiurl = 'http://127.0.0.1:8000/api/opticas';
 
 
+
   constructor(private http: HttpClient) { }
 
   retornar(): Observable<any[]> {
