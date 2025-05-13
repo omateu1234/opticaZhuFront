@@ -4,6 +4,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { CommonModule } from '@angular/common';
 import { VentasService } from '../../Servicios/ventas.service';
 import DataTables, { Config } from 'datatables.net';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-todos-ventas',
@@ -22,52 +23,51 @@ export class VerTodosComponent implements OnInit{
   constructor(private ventasService: VentasService,private renderer: Renderer2 ){}
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      serverSide: true,
-      processing: true,
-      ajax: (dataTablesParameters: any, callback: (data: any) => void) => {
-        const buscar = dataTablesParameters.search.value;
-        //console.log("algo",buscar);
-        this.ventasService.ventasOptica(this.idOptica).subscribe((resp: any) => {
-          this.ventas = resp;
-          console.log("ventas", this.ventas);
-          callback({
-            recordsTotal: resp.length, // Número total de empleados
-            recordsFiltered: resp.length, // Número de empleados filtrados (puedes aplicar filtros si los tienes)
-            data: resp // Aquí pasas los datos de los empleados obtenidos
+    // Suponiendo que la llamada al servicio sea asíncrona, mandamos a buscar los datos
+    this.ventasService.ventasOptica(this.idOptica).subscribe((resp: any) => {
+      this.ventas = resp;
+
+      // Configuración de DataTable en el lado del cliente
+      this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 10,
+        lengthMenu: [5, 10, 20, 50],
+        searching: true,
+        columns: [
+          { title: 'ID', data: 'id', visible: true },
+          { title: 'Fecha', data: 'fecha' },
+          { title: 'Estado', data: 'estado' },
+          { title: 'Metodo de Pago', data: 'metodoPago' },
+          {
+            title: 'Cliente',
+            data: null,
+            render: (data: any, type: any, row: any) => {
+              return `${row.cliente.nombre} ${row.cliente.apellido}`;
+            }
+          },
+        ],
+        rowCallback: (row: Node, data: any, index: number) => {
+          const rowElement = row as HTMLElement;
+          this.renderer.listen(rowElement, 'click', () => {
+            console.log('Datos de la fila:', data);
+            this.accederPerfilVenta(data);
           });
+          return row;
+        }
+      };
+      // Inicializa DataTables con los datos recibidos
+      $(document).ready(() => {
+        $('#ventasTable').DataTable({
+          data: this.ventas, // Aquí pasamos los datos directamente
+          columns: this.dtOptions.columns,
+          pagingType: this.dtOptions.pagingType,
+          pageLength: this.dtOptions.pageLength,
+          lengthMenu: this.dtOptions.lengthMenu,
+          searching: this.dtOptions.searching,
+          rowCallback: this.dtOptions.rowCallback
         });
-      },
-      lengthMenu : [5,10,20,50],
-      searching:true,
-      columns: [
-        { title: 'ID', data: 'id', visible:true },            // Coincide con la propiedad 'id' en los objetos
-        { title: 'Fecha', data: 'fecha' },     // Coincide con la propiedad 'nombre'
-        { title: 'Estado', data: 'estado' }, // Coincide con la propiedad 'apellido'
-        { title: 'Metodo de Pago', data:'metodoPago'},
-        { title: 'Cliente',
-          data:null,
-          render:(data:any, type:any, row:any) =>{
-            return `${row.cliente.nombre} ${row.cliente.apellido}`;
-          }
-         }, // Coincide con la propiedad 'direccion'
-      ],
-      rowCallback: (row: Node, data: any, index: number) => {
-        // Cast row to HTMLElement to access querySelector
-        //const rowElement = row as HTMLElement;
-        const rowElement = row as HTMLElement;
-        // Ensure the last cell (Actions column) is styled
-
-        this.renderer.listen(rowElement, 'click', () => {
-          console.log('Datos de la fila:', data); // Imprime los datos de la fila clicada en la consola.
-          this.accederPerfilVenta(data);
-        });
-
-        return row;
-      }
-    };
+      });
+    });
   }
 
   accederPerfilVenta(data: any){
@@ -85,5 +85,54 @@ export class VerTodosComponent implements OnInit{
     if(this.ventaSeleccionada.estado=='cancelado' || this.ventaSeleccionada.estado=='recibido'){
       location.href='ventas/factura';
     }
+  }
+
+  filtro() {
+    Swal.fire({
+      title: 'Filtro de Ventas',
+      html: `
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" class="swal2-input" placeholder="Fecha">
+        <hr>
+        <label for="estado">Estado</label>
+        <select id="estado" class="swal2-select">
+          <option value="" selected>Todos</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="cancelado">Cancelado</option>
+          <option value="recibido">Recibido</option>
+        </select>
+        <hr>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Filtrar',
+      preConfirm: () => {
+        const fecha = (document.getElementById('fecha') as HTMLInputElement).value;
+        const estado = (document.getElementById('estado') as HTMLSelectElement).value;
+
+        console.log("Fecha:", fecha);
+        console.log("Estado:", estado);
+
+        return { fecha, estado };
+      }
+    }).then(result => {
+      if (result.isConfirmed) {
+        console.log("Datos del filtro:", result.value);
+        this.realizarFiltrado(result.value);
+      }
+    });
+  }
+
+
+  realizarFiltrado(result:any){
+    console.log("datos del filtrado", result);
+
+    const tabla= $('#ventasTable').DataTable();
+
+    tabla.columns(1).search(result.fecha || '');
+    tabla.columns(2).search(result.estado || '');
+
+    //tabla.clear();
+    tabla.draw();
+    console.log("filtrado");
   }
 }
