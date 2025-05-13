@@ -142,7 +142,8 @@ idEmpleado: any;
         nombre:this.nombre,
         descripcion:this.descripcion,
         precioProveedor:this.precioProveedor,
-        idProveedor:this.idProveedor
+        idProveedor:this.idProveedor,
+        idOptica:this.idOptica
       }
 
       this.articulosRealService.createArticulo(articulo).subscribe({

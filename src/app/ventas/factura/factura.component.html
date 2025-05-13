@@ -109,6 +109,7 @@
                           <div class="col d-flex justify-content-center">
                               <button *ngIf="datosFactura['metodoPago'] == 'transferencia'" class="btn btn-primary botonNuevaCita me-4" (click)="comprobarIban()" type="submit">Pagar</button>
                               <button *ngIf="datosFactura['metodoPago'] == 'tarjeta'" class="btn btn-primary botonNuevaCita me-4" (click)="comprobarTarjeta()" type="submit">Pagar</button>
+                              <button *ngIf="datosFactura['metodoPago'] == 'efectivo'" class="btn btn-primary botonNuevaCita me-4" (click)="pagarFactura()" type="submit">Pagar</button>
                           </div>
                       </div>
                   </div>
