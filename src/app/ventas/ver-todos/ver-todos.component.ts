@@ -103,8 +103,10 @@ export class VerTodosComponent implements OnInit{
         </select>
         <hr>
       `,
-      showCancelButton: true,
       confirmButtonText: 'Filtrar',
+      customClass: {
+          confirmButton: 'botonNuevaCita'
+      },
       preConfirm: () => {
         const fecha = (document.getElementById('fecha') as HTMLInputElement).value;
         const estado = (document.getElementById('estado') as HTMLSelectElement).value;
