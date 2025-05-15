@@ -10,7 +10,7 @@ export class ClientesService {
 
   private clientes='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/clientes';
 
-  private buscar='http://optica-1633249365.us-east-1.elb.amazonaws.com/propietario/buscarCli';
+  private buscar='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/buscarCli';
 
   private citasCliente='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citasCliente';
 

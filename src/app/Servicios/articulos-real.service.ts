@@ -15,6 +15,8 @@ export class ArticulosRealService {
 
   private articulosOpti='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/articulosOptica';
 
+  private editArticulo='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/actualizarArticulo';
+
   constructor(private http: HttpClient ) { }
 
   getAll(): Observable<any[]>{
@@ -31,5 +33,9 @@ export class ArticulosRealService {
 
   getArticulosByOptica(idOptica: any): Observable<any[]>{
     return this.http.get<any[]>(this.articulosOpti, {params: {idOptica}});
+  }
+
+  editarArticulo(articulo: any): Observable<any[]>{
+    return this.http.put<any[]>(this.editArticulo, articulo);
   }
 }

@@ -11,7 +11,7 @@ export class CitasService {
 
   private apiurl='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/crearCita';
 
-  //private citas='http://optica-1633249365.us-east-1.elb.amazonaws.com//api/citas';
+  //private citas='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citas';
 
   private citas='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citasOptica';
 
