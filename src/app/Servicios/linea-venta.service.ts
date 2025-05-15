@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LineaVentaService {
 
-  private crearLineaVenta='http://127.0.0.1:8000/api/insertarLineaVenta';
+  private crearLineaVenta='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/insertarLineaVenta';
 
 
   constructor(private http: HttpClient ) { }

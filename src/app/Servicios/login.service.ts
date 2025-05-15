@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private loginUrl='http://127.0.0.1:8000/api/loginAngular';
+  private loginUrl='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/loginAngular';
 
   constructor(private http:HttpClient ) { }
 

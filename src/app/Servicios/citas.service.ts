@@ -9,15 +9,15 @@ export class CitasService {
 
   private fecha:string='';
 
-  private apiurl='http://127.0.0.1:8000/api/crearCita';
+  private apiurl='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/crearCita';
 
-  //private citas='http://127.0.0.1:8000/api/citas';
+  //private citas='http://optica-1633249365.us-east-1.elb.amazonaws.com//api/citas';
 
-  private citas='http://127.0.0.1:8000/api/citasOptica';
+  private citas='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citasOptica';
 
-  private citasOcupadas='http://127.0.0.1:8000/api/citasOcupadas';
+  private citasOcupadas='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citasOcupadas';
 
-  private borrarCita= 'http://127.0.0.1:8000/api/borrarCita';
+  private borrarCita= 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/borrarCita';
 
  /*  private citas: Citas[] = [
     { hora: '08:00', nombre: 'Juan Pérezoso', motivocita: 'Cambio de graduación' },

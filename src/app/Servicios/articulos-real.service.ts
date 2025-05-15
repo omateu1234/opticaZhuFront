@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ArticulosRealService {
 
-  private articulos='http://127.0.0.1:8000/api/articulos';
+  private articulos='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/articulos';
 
-  private buscarArticulo='http://127.0.0.1:8000/api/buscarArticulo';
+  private buscarArticulo='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/buscarArticulo';
 
-  private crearArticulo='http://127.0.0.1:8000/api/crearArticulo';
+  private crearArticulo='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/crearArticulo';
 
-  private articulosOpti='http://127.0.0.1:8000/api/articulosOptica';
+  private articulosOpti='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/articulosOptica';
 
   constructor(private http: HttpClient ) { }
 
