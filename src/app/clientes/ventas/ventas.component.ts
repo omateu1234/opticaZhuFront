@@ -112,7 +112,12 @@ export class VentasComponent implements OnInit {
     localStorage.setItem('idVenta', this.ventaSeleccionada.id);
 
 
+    if(this.ventaSeleccionada.estado=='pendiente'){
+      location.href = 'ventas/perfil-venta/';
+    }
 
-    location.href = 'ventas/perfil-venta/';
+    if(this.ventaSeleccionada.estado=='cancelado' || this.ventaSeleccionada.estado=='recibido'){
+      location.href='ventas/factura';
+    }
   }
 }
