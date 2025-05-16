@@ -50,8 +50,9 @@
           <td>{{ (linea['importe']) }}€</td>
       </tr>
 
-      <p><strong>Subtotal:</strong> {{ (datosFactura['subtotal']) }}€</p>
-      <p><strong>Total (IVA incluido):</strong> {{ (datosFactura['total']) }}€</p>
+      <p><strong>Subtotal:</strong> {{ (datosFactura['subtotal'] | number:'1.2-2') }}€</p>
+      <p><strong>IVA (21%):</strong> {{ (datosFactura['subtotal'] * 0.21 | number:'1.2-2') }}€</p>
+      <p><strong>Total (IVA incluido):</strong> {{ (datosFactura['total'] | number:'1.2-2') }}€</p>
     </tbody>
     </table>
 

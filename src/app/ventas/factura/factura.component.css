@@ -1,5 +1,5 @@
 .tabla-articulos {
-  width: 63%;
+  width: 100%;
   border-collapse: separate; /* Importante para que el border-radius funcione */
   border-spacing: 5px; /* Elimina espacios entre celdas */
   border: none; /* Borde general de la tabla */
