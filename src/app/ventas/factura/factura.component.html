@@ -1,7 +1,7 @@
 <div id="factura" class="container-flex containerPagina">
   <div class="row w-100 mb-4">
       <div class="col-auto me-auto">
-          <h1 class="tituloPagina">Factura de Venta  </h1>
+          <h1 class="tituloPagina">Factura de Venta</h1>
       </div>
       <div class="col-auto">
         <a onclick="location.href='/ventas/ver-todos'" class="btn-close cerrar">
@@ -10,7 +10,7 @@
   </div>
 
   <form method="post">
-    <p><strong>Número de Factura:</strong> {{ datosFactura['idVenta'] }}</p>
+    <p><strong>Número de Factura:</strong> {{ numeroFactura }}</p>
     <p><strong>Fecha:</strong> {{ datosFactura?.fecha | date:'dd-MM-yyyy' }}</p>
     <!-- <p><strong>Metodo de Pago:</strong> {{ datosFactura['metodoPago'] }}</p>
     <p><strong>Estado del Pago:</strong> {{ datosFactura['estadoPago'] }}</p> -->

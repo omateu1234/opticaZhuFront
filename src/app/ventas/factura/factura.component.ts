@@ -19,6 +19,7 @@ export class FacturaComponent implements OnInit {
 
 
   datosFactura:any=[];
+  numeroFactura: string='';
 
   /**Datos Factura */
   fecha:string='';
@@ -38,9 +39,17 @@ export class FacturaComponent implements OnInit {
     this.idVenta=localStorage.getItem('idVenta') as string;
     this.estadoPago='pagado';
 
+
+
+
     this.generarFactura(this.idVenta);
     //console.log(this.datosFactura);
 
+    const fecha = new Date();
+    const idVenta = this.idVenta || '0000'; // Usa el ID de la venta o un valor predeterminado
+    this.numeroFactura = `FAC-${fecha.getFullYear()}${(fecha.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}${fecha.getDate().toString().padStart(2, '0')}-${idVenta}`;
 
   }
 
