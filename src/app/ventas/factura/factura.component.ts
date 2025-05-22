@@ -133,7 +133,7 @@ export class FacturaComponent implements OnInit {
       const position = 10; // Margen superior
 
       doc.addImage(imgData, 'SVG', 10, position, imgWidth, imgHeight); // Agrega la imagen al PDF
-      doc.save(`Factura_${this.idVenta}.pdf`); // Guarda el archivo PDF con un nombre dinámico
+      doc.save(`${this.numeroFactura}.pdf`); // Guarda el archivo PDF con un nombre dinámico
     });
   }
 }

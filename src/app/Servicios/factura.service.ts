@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class FacturaService {
 
-  private factura='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/generarFactura';
+  private factura='http://127.0.0.1:8000/api/generarFactura';
 
-  private pagarFactura='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/pagarFactura';
+  private pagarFactura='http://127.0.0.1:8000/api/pagarFactura';
 
 
   constructor(private http: HttpClient ) { }

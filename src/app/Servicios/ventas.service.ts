@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class VentasService {
 
-  private ventas='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/ventas';
+  private ventas='http://127.0.0.1:8000/api/ventas';
 
-  private crearVenta='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/crearVenta';
+  private crearVenta='http://127.0.0.1:8000/api/crearVenta';
 
-  private cancelarVenta='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/cancelarVenta';
+  private cancelarVenta='http://127.0.0.1:8000/api/cancelarVenta';
 
-  private venOptica='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/ventasOptica';
+  private venOptica='http://127.0.0.1:8000/api/ventasOptica';
 
 
   constructor(private http: HttpClient ) { }

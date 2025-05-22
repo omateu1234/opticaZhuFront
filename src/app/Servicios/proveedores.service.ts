@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProveedoresService {
 
-  private proveedores= 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/proveedores';
+  private proveedores= 'http://127.0.0.1:8000/api/proveedores';
 
   constructor(private http: HttpClient ) { }
 
