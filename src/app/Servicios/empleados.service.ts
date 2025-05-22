@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class EmpleadosService {
 
-  private apiurl = 'http://127.0.0.1:8000/api/empleadosOptica';
-  private apibuscarEmpleado = 'http://127.0.0.1:8000/api/buscarEmpleadoApi';
-  private actualizarEmpleado = 'http://127.0.0.1:8000/api/actualizarEmpleadoApi';
-  private opticaEmpleado= 'http://127.0.0.1:8000/api/opticaEmpleado';
+  private apiurl = 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/empleadosOptica';
+  private apibuscarEmpleado = 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/buscarEmpleadoApi';
+  private actualizarEmpleado = 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/actualizarEmpleadoApi';
+  private opticaEmpleado= 'http://optica-1633249365.us-east-1.elb.amazonaws.com/api/opticaEmpleado';
 
 
   constructor(private http: HttpClient) { }

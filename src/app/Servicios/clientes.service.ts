@@ -8,15 +8,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ClientesService {
 
-  private clientes='http://127.0.0.1:8000/api/clientes';
+  private clientes='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/clientes';
 
-  private buscar='http://127.0.0.1:8000/api/buscarCli';
+  private buscar='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/buscarCli';
 
-  private citasCliente='http://127.0.0.1:8000/api/citasCliente';
+  private citasCliente='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/citasCliente';
 
-  private borrarCliente='http://127.0.0.1:8000/api/borrarCliente';
+  private borrarCliente='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/borrarCliente';
 
-  private ventasCliente='http://127.0.0.1:8000/api/clienteVentas';
+  private ventasCliente='http://optica-1633249365.us-east-1.elb.amazonaws.com/api/clienteVentas';
 
   constructor(private http: HttpClient) { }
 
