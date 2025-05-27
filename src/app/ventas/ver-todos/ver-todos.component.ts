@@ -70,6 +70,10 @@ export class VerTodosComponent implements OnInit{
     });
   }
 
+  /**
+   * Metodo para acceder a la información específica de una venta
+   * @param data la venta seleccionada por el usario
+   */
   accederPerfilVenta(data: any){
     this.ventaSeleccionada = data;
 
@@ -87,6 +91,9 @@ export class VerTodosComponent implements OnInit{
     }
   }
 
+  /**
+   * Un filtro de Ventas
+   */
   filtro() {
     Swal.fire({
       title: 'Filtro de Ventas',
@@ -124,7 +131,10 @@ export class VerTodosComponent implements OnInit{
     });
   }
 
-
+  /**
+   * Metodo para realiar el filtrado y modificar el dataTable.
+   * @param result
+   */
   realizarFiltrado(result:any){
     console.log("datos del filtrado", result);
 

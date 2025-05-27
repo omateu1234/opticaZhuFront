@@ -30,6 +30,9 @@ export class PerfilArticuloComponent implements OnInit{
 
   }
 
+  /**
+   * Metodo para editar los datos de un artículo
+   */
   editarArticulo(){
     const articulo=[
       { key: 'id', value: this.idArt },

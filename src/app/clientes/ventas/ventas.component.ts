@@ -78,6 +78,9 @@ export class VentasComponent implements OnInit {
 
   }
 
+  /**
+   * Se pasa el DNI para conseguir los datos del cliente
+   */
   buscarCliente(){
     this.clientesService.buscarCli(this.dni).subscribe({
       next: (data: any) => {
@@ -93,6 +96,9 @@ export class VentasComponent implements OnInit {
   }
 
 
+  /**
+   * Se buscan las ventas del cliente mediante el DNI
+   */
   ventasCliente(){
     this.clientesService.ventasCli(this.dni).subscribe({
       next: (data: any) => {
@@ -104,6 +110,9 @@ export class VentasComponent implements OnInit {
     });
   }
 
+  /**
+   *Metodo para acceder a la información específica de una compra realizada por el cliente
+   */
   accederPerfilVenta(data: any){
     this.ventaSeleccionada = data;
 

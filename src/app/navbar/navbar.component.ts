@@ -76,6 +76,9 @@ idEmpleado: any;
     }
   }
 
+  /**
+   * Busca la óptica de un empleado por su ID
+   */
   opticaEmpleado(){
     this.empleadosService.opticaEmple(this.idOptica).subscribe({
       next: (data: any) => {
@@ -92,10 +95,16 @@ idEmpleado: any;
     })
   }
 
+  /**
+   * Cierra la sesion y limpia el almacenamiento local
+   */
   cerrarSesion(){
     localStorage.clear();
   }
 
+  /**
+   * Busca un cliente por su DNI y guarda sus datos
+   */
   buscarCliente(){
     localStorage.setItem('dni', this.dni);
     this.clientesService.buscarCli(this.dni).subscribe((data: any) => {
@@ -113,6 +122,9 @@ idEmpleado: any;
     })
   }
 
+  /**
+   * Busca un artículo por su ID
+   */
   buscarArticulo(){
     localStorage.setItem('id' , this.idArticulo);
     this.articulosRealService.getById(Number(this.idArticulo)).subscribe((data:any)=>{
@@ -128,6 +140,9 @@ idEmpleado: any;
     })
     }
 
+    /**
+     * Carga todos los proveedores al cargar la página
+     */
     conseguirProveedores(){
       this.proveedoresService.getAll().subscribe({
         next: (data: any) => {
@@ -137,6 +152,9 @@ idEmpleado: any;
       })
     }
 
+    /**
+     * Crea un artículo pasandole sus datos
+     */
     crearArticulo(){
       const articulo={
         nombre:this.nombre,
@@ -162,6 +180,9 @@ idEmpleado: any;
       console.log(articulo);
     }
 
+    /**
+     * Crea una venta pasandole sus datos.
+     */
     crearVenta(){
       const venta={
         fecha:this.fecha,
@@ -186,6 +207,9 @@ idEmpleado: any;
       console.log(venta);
     }
 
+    /**
+     * Busca una las ventas de un cliente mediante su DNI
+     */
     buscarVenta(){
       //console.log(this.dni);
       localStorage.setItem('dni', this.dni);

@@ -53,6 +53,10 @@ export class FacturaComponent implements OnInit {
 
   }
 
+  /**
+   * Metodo que genera la factura del cliente
+   * @param idVenta la venta seleccionada
+   */
   generarFactura(idVenta:string){
     this.facturaService.generarFactura(idVenta).subscribe({
       next: (data: any) => {
@@ -64,6 +68,9 @@ export class FacturaComponent implements OnInit {
     });
   }
 
+  /**
+   * Metodo que comprueba si el IBAN es válido
+   */
   comprobarIban(){
     const ibanPattern = /^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$/;
     if (this.iban.match(ibanPattern)) {
@@ -76,6 +83,9 @@ export class FacturaComponent implements OnInit {
     }
   }
 
+  /**
+   * Método que comprueba si la tarjeta de pago es válida
+   */
   comprobarTarjeta(){
     const tarjetaPattern=/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35[0-9]{3})[0-9]{11})$/;
 
@@ -90,6 +100,9 @@ export class FacturaComponent implements OnInit {
     }
   }
 
+  /**
+   * Método que paga la factura
+   */
   pagarFactura(){
     const factura={
       fecha:this.fecha,
@@ -116,6 +129,9 @@ export class FacturaComponent implements OnInit {
     //localStorage.clear();
   }
 
+  /**
+   * Metodo que genera el pdf de la factura
+   */
   generarPdf(): void{
     const DATA: HTMLElement = document.getElementById('factura') as HTMLElement; // Selecciona el contenedor de la factura
     const doc = new jsPDF('p', 'mm', 'a4'); // Crea un documento PDF en formato A4
@@ -126,11 +142,11 @@ export class FacturaComponent implements OnInit {
     html2canvas(DATA, {ignoreElements: (element) => {
       return element.classList.contains('cerrar') || element.classList.contains('botonNuevaCita') || element.classList.contains('modal');
     }}).then((canvas) => {
-      const imgData = canvas.toDataURL('image/svg'); // Convierte el canvas a una imagen en formato PNG
+      const imgData = canvas.toDataURL('image/png'); // Convierte el canvas a una imagen en formato PNG
       console.log(DATA);
-      const imgWidth = 190; // Ancho de la imagen en mm
+      const imgWidth = 190;
       const imgHeight = (canvas.height * imgWidth) / canvas.width; // Calcula la altura proporcional de la imagen
-      const position = 10; // Margen superior
+      const position = 10;
 
       doc.addImage(imgData, 'SVG', 10, position, imgWidth, imgHeight); // Agrega la imagen al PDF
       doc.save(`${this.numeroFactura}.pdf`); // Guarda el archivo PDF con un nombre dinámico

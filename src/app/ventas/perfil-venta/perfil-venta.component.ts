@@ -53,23 +53,37 @@ export class PerfilVentaComponent implements OnInit{
     });
   }
 
-
+  /**
+   *Metodo para aumentar la cantidad del artículo vendido
+   * @param articulo el artículo seleccionado
+   */
   incrementarCantidad(articulo: any): void {
     if (articulo.cantidad < articulo.stock) {
       articulo.cantidad++;
     }
   }
 
+  /**
+   *Metodo para decrementar la cantidad del artículo vendido
+   * @param articulo el articulo seleccionado
+   */
   decrementarCantidad(articulo: any): void {
     if (articulo.cantidad > 0) {
       articulo.cantidad--;
     }
   }
 
+  /**
+   *Metodo para calcular el importe de un producto
+   * @param articulo el articulo seleccionado
+   * @returns el calculo del importe a pagar de ese producto
+   */
   calcularImporte(articulo: any): number {
     return articulo.cantidad * articulo.precioCliente;
   }
-
+  /**
+   * Metodo que añade la información de los artículos en la base de datos
+   */
   crearLineaventa(): void{
     const articulos = this.articulosVenta
     .filter(art => art.cantidad && art.cantidad > 0)
@@ -99,6 +113,9 @@ export class PerfilVentaComponent implements OnInit{
     })
   }
 
+  /**
+   * Metodo para cancelar una venta
+   */
   cancelarVenta(){
     const payload = {
       id_venta: this.idVenta // Cambia el nombre del campo para que coincida con el esperado por el backend

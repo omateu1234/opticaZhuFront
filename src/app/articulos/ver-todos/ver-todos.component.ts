@@ -65,6 +65,10 @@ export class VerTodosComponent  implements OnInit{
     };
   }
 
+  /**
+   *Metodo para acceder a la información de un artículo
+   * @param data el artículo seleccionado
+   */
   accederPerfilArticulo(data:any): void{
     this.articuloSeleccionado=data;
 

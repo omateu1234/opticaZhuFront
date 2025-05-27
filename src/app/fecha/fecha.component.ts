@@ -54,16 +54,13 @@ export class FechaComponent  implements OnInit{
         console.log("dni enviado",this.dni);
 
       this.cliente=localStorage.getItem('cliente') as string;
-      console.log("cliente enviado",this.cliente);
+
 
       this.idCliente=localStorage.getItem('idCliente') as string;
-      console.log("id enviado",this.idCliente);
 
       this.apellidoCliente=localStorage.getItem('apellido') as string;
-      console.log("apellido enviado",this.apellidoCliente);
 
       this.nombreCliente=localStorage.getItem('nombreCliente') as string;
-      console.log("nombre enviado",this.nombreCliente);
 
       console.log('Optica', this.idOptica);
 
@@ -84,6 +81,9 @@ export class FechaComponent  implements OnInit{
       //this.generarHorasCita();
   }
 
+  /**
+   *Metodo que genera los intervalos de tiempo disponables de la óptica
+  */
   generarHorasCita(){
     const horaInicio=10;
     const horaFin=20;
@@ -105,10 +105,17 @@ export class FechaComponent  implements OnInit{
     }
   }
 
+  /**
+   *Metodo para declarar la hora de la cita
+   * @param hora la hora deseada por el cliente para su cita
+   */
   seleccionarHora(hora: string): void {
     this.horaSeleccionada=hora;
   }
 
+  /**
+   * Método para crear  la cita
+   */
   crearCita(){
     const cita = {
       fecha: this.fecha,
@@ -136,6 +143,9 @@ export class FechaComponent  implements OnInit{
     console.log(cita);
   }
 
+  /**
+   * Metodo para comprobar si una cita esta ocupada en un dia y hora específicos
+   */
   citasOcupadas(): void {
     //console.log("fecha enviada",this.fechaDate);
     this.citaSerivce.citOcupadas(this.fecha).subscribe({
